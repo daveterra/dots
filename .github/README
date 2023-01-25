@@ -1,0 +1,12 @@
+# Yet Another Dotfile Repo
+
+Here are my dotfiles. There are many like them but these ones are mine.
+
+## Bootstrap
+
+## Tools
+Previously, I was using chezmoi and a private dotfiles repository. This was annoying because I had to do all the setup to get a private key set up with github and get chezmoi installed. And it might not seem like a lot but I am bootstrapping new computers often enough that it just feels like a few too many steps. This setup requires only git and was inspired by [this hackernews post](https://news.ycombinator.com/item?id=11071754).
+
+## Extra:
+- defaults write org.hammerspoon.Hammerspoon MJConfigFile "~/.config/hammerspoon/init.lua"
+- git clone https://github.com/tmux-plugins/tpm ~/.local/share/tmux/plugins/tpm

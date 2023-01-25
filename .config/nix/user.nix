@@ -1,0 +1,29 @@
+with import <nixpkgs> {}; [
+  aspell
+  bitwarden-cli
+  boxes
+  chafa
+  chezmoi
+  ctags
+  ddgr
+  dust
+  figlet
+  jq
+  lazygit
+  neofetch
+  neovim
+  nmap
+  starship
+  nodejs
+  spotdl
+  cbonsai
+  lolcat
+  pv
+  fish
+  silver-searcher
+  python3
+  watch-procps
+  fzf
+  tmux
+  fswatch
+]
