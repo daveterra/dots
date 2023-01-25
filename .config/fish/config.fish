@@ -17,7 +17,6 @@
 fish_add_path "$HOME/.cargo/bin"
 fish_add_path /usr/local/sbin
 fish_add_path ~/.local/bin
-fish_add_path ~/bin/
 fish_add_path ~/.cargo/bin
 fish_add_path  /nix/var/nix/profiles/default/bin
 
@@ -44,7 +43,7 @@ if status is-interactive
 
   # Set locations for tools so $HOME isn't clogged up
   set -gx CHTSH_CONF "$XDG_CONFIG_HOME/cht.sh/cht.sh.conf"
-  set -gx SD_ROOT "$HOME/bin/sd_scripts/"
+  set -gx SD_ROOT "$HOME/code/sd/sd_scripts/"
   set -gx _ZO_DATA_DIR "$XDG_DATA_HOME/z/"
   set -gx YARN_RC_FILENAME "$XDG_CONFIG_HOME/yarn/yarnrc"
   set -gx WGETRC "$XDG_CONFIG_HOME/wget/wgetrc"
@@ -109,6 +108,7 @@ if status is-interactive
   alias cloud "ssh dave@terracloud.us"
   alias router "ssh admin@10.173.0.1"
   alias myip "curl ipinfo.io/ip"
+  alias sd "~/code/sd/sd"
   # https://blog.benoitj.ca/2020-10-03-chezmoi-merging/
   alias cmm="chezmoi diff --use-builtin-diff | grep 'diff --git' | cut -f3 -d ' ' | sed 's/a\//~\//' | xargs -r chezmoi merge"
   abbr rm recycling
@@ -124,14 +124,14 @@ if status is-interactive
   function fish_command_not_found
     if test "$argv[1]" = "fisher"
       curl https://git.io/fisher --create-dirs -sLo ~/.config/fish/functions/fisher.fish
-    end
-    if test "$argv[1]" = "nix-env"
+    else if test "$argv[1]" = "nix-env"
       fisher update
-    end
-    if test "$argv[1]" = "vf"
+    else if test "$argv[1]" = "vf"
       python -m pip install virtualfish
       vf install
       vf addplugins auto_activation
+    else if test "$argv[1]" = "sd"
+      git clone  git@github.com:daveterra/sd.git ~/code/sd
     end
 
     echo "Dave, check your config.fish"
