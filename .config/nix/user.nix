@@ -22,8 +22,12 @@ with import <nixpkgs> {}; [
   fish
   silver-searcher
   python3
-  watch-procps
   fzf
   tmux
   fswatch
+
+  docker-compose
+  git
+  nix
+  mosh
 ]

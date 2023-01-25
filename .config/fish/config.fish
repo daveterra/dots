@@ -12,6 +12,11 @@
 # set -q PATH; or set PATH ''; set -gx PATH "/opt/homebrew/bin" "/opt/homebrew/sbin" $PATH;
 # set -q MANPATH; or set MANPATH ''; set -gx MANPATH "/opt/homebrew/share/man" $MANPATH;
 # set -q INFOPATH; or set INFOPATH ''; set -gx INFOPATH "/opt/homebrew/share/info" $INFOPATH;
+#
+set -gx LC_ALL en_US.UTF-8
+set -gx LANG en_US.UTF-8
+set -gx LANGUAGE en_US.UTF-8
+set -gx LOCALE_ARCHIVE /usr/lib/locale/locale-archive
 
 # Add to path
 fish_add_path "$HOME/.cargo/bin"
@@ -130,7 +135,7 @@ if status is-interactive
       python -m pip install virtualfish
       vf install
       vf addplugins auto_activation
-    else if test "$argv[1]" = "sd"
+    else if test "$argv[1]" = "~/code/sd/sd"
       git clone  git@github.com:daveterra/sd.git ~/code/sd
     end
 
