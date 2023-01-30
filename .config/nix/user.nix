@@ -26,6 +26,7 @@ with import <nixpkgs> {}; [
   tmux
   fswatch
 
+  rsync
   docker-compose
   git
   nix

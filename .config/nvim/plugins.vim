@@ -172,7 +172,7 @@ EOF
 
 lua << EOF
 require'nvim-treesitter.configs'.setup {
-  ensure_installed = { "c", "lua", "rust", "vim", "yaml", "bash", "fish", "markdown", "python" },
+   -- ensure_installed = { "c", "lua", "rust", "vim", "yaml", "bash", "fish", "markdown", "python" },
 
   sync_install = false,
 
