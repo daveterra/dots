@@ -1,0 +1,104 @@
+add_newline = true
+
+format = """
+[╭─$fill(─≺ $status$sudo$cmd_duration$battery≻─────)](bold foreground)
+[│](bold foreground) ${custom.macos}${custom.linux}\
+$username$hostname\
+$directory\
+$python$swift\
+($git_branch$git_state$git_status)
+[╰──](bold foreground)$character
+"""
+
+scan_timeout = 15
+
+# ≺ ❯ ≻  ∫ ﲵ   ❱
+
+[character]
+success_symbol = "[](bold foreground)"
+error_symbol="[](bold red)"
+vicmd_symbol="[](blue)"
+format="$symbol "
+
+[username]
+style_user = "bold bright-blue "
+style_root = "bold bright-red"
+format = "[$user]($style)@"
+disabled = false
+show_always = true
+
+[sudo]
+format="[$symbol ]($style)"
+style="bold red"
+symbol=""
+disabled=false
+
+[cmd_duration]
+show_milliseconds=false
+format="[ $duration]($style) "
+
+[git_branch]
+symbol = ""
+# symbol=""
+style = "purple"
+format = "[$symbol $branch]($style)"
+
+[git_status]
+format = ' ([\[$conflicted$deleted$renamed$modified$staged$untracked$ahead_behind\]]($style))'
+
+[hostname]
+ssh_only = false
+format = "[$hostname]($style) "
+style = "fg:yellow"
+
+[python]
+symbol="🐍"
+format="[(⟪$symbol($pyenv_prefix )$virtualenv⟫ )](bold green)"
+
+
+[custom.linux]
+command = ""
+when="true"
+os = "linux"
+symbol = ""
+format = "[$symbol ]($style)"
+
+[custom.macos]
+command = ""
+when="true"
+os = "macos"
+symbol = ""
+style="fg:foreground"
+format = "[$symbol ]($style)"
+
+[directory]
+home_symbol="~"
+style = "bold cyan"
+truncate_to_repo = true
+truncation_length = 7
+fish_style_pwd_dir_length = 1
+format = "[in ](foreground)[$path]($style)[$read_only]($read_only_style) "
+truncation_symbol = "..."
+
+[fill]
+symbol = "─"
+style = "bold foreground"
+
+# [directory.substitutions]
+#  
+# "Documents" = " "
+# "Downloads" = " "
+# "Music" = " "
+# "Pictures" = " "
+
+[battery]
+charging_symbol = "⚡️ "
+discharging_symbol = "💀 "
+disabled = false
+
+[[battery.display]]
+threshold = 30
+discharging_symbol = " "
+charging_symbol = " "
+style = "yellow"
+

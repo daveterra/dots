@@ -1,0 +1,305 @@
+/*
+ * Top/Nav bar stuff
+ */
+
+@media (prefers-color-scheme: dark) {
+  #root[data-style="auto"] {
+    --dt-color-black: #282c34;
+    --dt-color-red: #e06c75;
+    --dt-color-green: #98c379;
+    --dt-color-yellow: #e5c07b;
+    --dt-color-blue: #61afef;
+    --dt-color-magenta: #c678dd;
+    --dt-color-cyan: #56b6c2;
+    --dt-color-white: #dcdfe4;
+
+    --dt-color-bright-black: #323741;
+    --dt-color-bright-red: #e06c75;
+    --dt-color-bright-green: #98c379;
+    --dt-color-bright-yellow: #e5c07b;
+    --dt-color-bright-blue: #61afef;
+    --dt-color-bright-magenta: #c678dd;
+    --dt-color-bright-cyan: #56b6c2;
+    --dt-color-bright-white: #dcdfe4;
+
+    --dt-background: var(--dt-color-black);
+    --dt-foreground: var(--dt-color-white);
+    --dt-secondary: var(--dt-color-bright-black);
+  }
+}
+
+@media (prefers-color-scheme: light) {
+  #root[data-style="auto"] {
+    --dt-color-black: #383a42;
+    --dt-color-red: #e45649;
+    --dt-color-green: #50a14f;
+    --dt-color-yellow: #c18401;
+    --dt-color-blue: #0184bc;
+    --dt-color-magenta: #a626a4;
+    --dt-color-cyan: #0997b3;
+    --dt-color-white: #eaeaec;
+
+    --dt-color-bright-black: #383a42;
+    --dt-color-bright-red: #e45649;
+    --dt-color-bright-green: #50a14f;
+    --dt-color-bright-yellow: #c18401;
+    --dt-color-bright-blue: #0184bc;
+    --dt-color-bright-magenta: #a626a4;
+    --dt-color-bright-cyan: #0997b3;
+    --dt-color-bright-white: #fafafa;
+
+    --dt-background: var(--dt-color-white);
+    --dt-foreground: var(--dt-color-black);
+    --dt-secondary: var(--dt-color-bright-white);
+  }
+}
+
+#root {
+  --nav-btn-height: 34.5px !important;
+  --nav-btn-width: 36px !important;
+  --nav-btn-opacity: 0.2 !important;
+  --nav-btn-opacity-active: 1 !important;
+  --tabs-height: 38px !important;
+  --tabs-spacing: 4px;
+  --tabs-indent: 10px !important;
+  --tabs-font: "mesloLGS NF" !important;
+  --bg: var(--dt-background) !important;
+}
+
+.container {
+  padding-top: 2.5px !important;
+  margin: 0 auto !important;
+  max-width: calc(100% - 20px);
+  background-color: var(--dt-background);
+}
+
+/*
+ * Top/Nav bar stuff
+ */
+
+.settings-btn:not(:hover) {
+  opacity: 0 !important;
+}
+
+/* This is the little numbers for open tabs, it's not necessary */
+.Sidebar .panel-btn .len {
+  display: none;
+  top: 0px !important;
+  left: 3px !important;
+}
+
+.NavigationBar {
+  height: 40px;
+}
+
+.panels-box {
+  padding-left: 5px;
+}
+
+.Sidebar .panel-btn > svg,
+.Sidebar .panel-btn > img {
+  width: 20px !important;
+  height: 20px !important;
+}
+
+/*
+ * Not exactly sure what this does
+ * Maybe it's about when the thing is minimized? q
+ */
+
+.panel-btn[data-active="true"] {
+  display: none !important;
+  display: flex !important;
+  position: absolute !important;
+  background: none !important;
+  filter: none !important;
+}
+
+/*
+ * Pinned Tabs
+ */
+
+.PinnedDock {
+  padding-top: 2.5px !important;
+  padding-bottom: 0 !important;
+  margin-top: 2.5px;
+  margin-bottom: 2.5px;
+}
+
+.PinnedDock::after {
+  display: none !important;
+}
+
+/*
+ * Tabs
+ */
+
+.Tab .lvl-wrapper .t-box,
+.Tab .lvl-wrapper .fav,
+.Tab .lvl-wrapper .ctx,
+.Tab .lvl-wrapper .t-box .title,
+.PinnedTab .title,
+.PinnedTab:hover .title,
+.PinnedTab .fav,
+.Tab[data-discarded] .lvl-wrapper .t-box,
+.Tab[data-discarded] .lvl-wrapper .fav,
+.Tab[data-discarded] .lvl-wrapper .ctx {
+  font-family: var(--tabs-font) !important;
+  font-weight: bold;
+  color: var(--dt-color-green);
+  opacity: 1;
+}
+
+.Tab .lvl-wrapper:after,
+.PinnedTab {
+  border: 1px solid transparent !important;
+  border-radius: 5px;
+  text-align: left;
+}
+
+.Tab[data-discarded] .lvl-wrapper,
+.Tab .lvl-wrapper {
+  opacity: 0.6 !important;
+}
+
+.Tab:hover .lvl-wrapper,
+.Tab[data-active] .lvl-wrapper,
+.Tab .lvl-wrapper .ctx {
+  opacity: 1 !important;
+  filter: none !important;
+}
+
+.Tab[data-discarded] .lvl-wrapper {
+  filter: grayscale(1);
+  opacity: 1;
+}
+
+.Tab[data-active],
+.Tab:hover,
+.PinnedTab[data-active],
+.PinnedTab:hover {
+  background-color: transparent;
+  box-shadow: none !important;
+}
+
+.Tab[data-active] .lvl-wrapper:after,
+.PinnedTab[data-active] {
+  background-color: var(--dt-secondary);
+}
+
+.Tab .t-box,
+.PinnedTab .title {
+  mask: linear-gradient(-90deg, transparent, #000 25px, #000);
+}
+
+.Tab .close > svg:hover {
+  background: rgba(0, 0, 0, 0.075);
+  border-radius: 4px;
+}
+
+/* Background layer for tabs */
+.Tab .lvl-wrapper:after {
+  border: 1px solid transparent !important;
+  border-radius: 5px;
+  text-align: left;
+  transition: width 0.1s !important;
+  content: "";
+  position: absolute;
+  top: 0px;
+  left: 2px;
+  margin: var(--tabs-spacing) 0;
+  width: calc(100% - 4px);
+  height: calc(100% - calc(var(--tabs-spacing) * 2));
+  z-index: -1;
+}
+
+/* Style for pinned tabs */
+
+.PinnedTab {
+  height: calc(var(--tabs-height) - calc(var(--tabs-spacing) * 2)) !important;
+  margin: var(--tabs-spacing) 5px;
+}
+
+.Tab:hover .lvl-wrapper:after,
+.PinnedTab:hover::before {
+  --color: #f0f;
+  background-color: var(--dt-foreground);
+  opacity: 0.2;
+  color: var(--dt-color-green);
+}
+
+.Tab[data-active]:hover .lvl-wrapper:after {
+  box-shadow: none !important;
+}
+
+/*  Favicon Settings */
+
+.Tab[data-active] .fav,
+.Tab:hover .fav,
+.PinnedTab:hover .fav {
+  filter: none !important;
+  opacity: 1 !important;
+}
+
+.Tab .fav,
+.PinnedTab .fav {
+  position: relative;
+  width: 18px;
+  height: 18px;
+  flex-shrink: 0;
+  margin: 0 6px 0 7px;
+}
+
+.PinnedTab .close {
+  display: none !important;
+}
+
+.Tab .ctx,
+.PinnedTab .ctx {
+  top: 0px;
+  right: auto;
+  left: -11px;
+  width: 4px;
+  height: calc(100% - 5px);
+}
+
+@media screen and (max-width: 60px) {
+  #root {
+    --tabs-indent: unset !important;
+  }
+
+  .container {
+    max-width: 60px !important;
+    margin: 0px !important;
+  }
+
+  .container::after {
+    margin-left: 16px;
+  }
+
+  .Tab .audio {
+    margin-left: -15px;
+    transform: scale(0.8);
+    z-index: 99 !important;
+  }
+
+  .Tab,
+  .PinnedTab {
+    max-width: 30px;
+    float: left !important;
+    margin-left: 5px;
+  }
+  .PinnedTab .ctx {
+    opacity: 0;
+  }
+
+  .panel-btn[data-active] {
+    display: flex !important;
+    position: absolute !important;
+    background: none !important;
+  }
+
+  .Sidebar .settings-btn {
+    display: none;
+  }
+}
