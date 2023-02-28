@@ -1,0 +1,18 @@
+[user]
+	name = Dave Terra
+	email = 11788035+daveterra@users.noreply.github.com
+[core]
+	editor = nvim
+[alias]
+	co = checkout
+	ci = commit
+	st = status
+	br = branch
+	gap = add --patch -i
+	hist = log --pretty=format:'%h %ad | %s%d [%an]' --graph --date=short
+	type = cat-file -t
+	dump = cat-file -p
+	cleanbranch = fetch --all -Pp
+	slog = log --graph --all --topo-order --pretty='format:%h %ai %s%d (%an)'
+[init]
+	defaultBranch = main
