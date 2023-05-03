@@ -142,8 +142,8 @@ if status is-interactive
       python -m pip install virtualfish
       vf install
       vf addplugins auto_activation
-    else if test "$argv[1]" = "~/code/sd/sd"
-      git clone  git@github.com:daveterra/sd.git ~/code/sd
+    else if test "$argv[1]" = "sd"
+      git clone  --recurse-submodules git@github.com:daveterra/sd.git ~/code/sd
     end
 
     echo "Dave, check your config.fish"
