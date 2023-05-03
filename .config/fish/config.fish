@@ -52,7 +52,7 @@ end
 source ~/.config/fish/my_functions/*.fish
 
 # Set up for SD
-set -gx SD_ROOT "$HOME/code/sd/sd_scripts/"
+set -gx SD_ROOT "$HOME/code/sd_scripts/"
 fish_add_path "$HOME/code/sd"
 
 set -gx EDITOR nvim
@@ -149,6 +149,7 @@ if status is-interactive
   alias deepthought "ssh dave@10.173.0.2"
   alias truenas "ssh dave@10.173.0.4"
   alias glados "ssh dave@10.173.0.5"
+  alias work "ssh dave@10.173.0.11"
   alias skynet "ssh pi@10.243.24.42"
   alias nas "ssh Dave@10.173.0.3"
   alias cloud "ssh dave@terracloud.us"
@@ -177,6 +178,7 @@ if status is-interactive
       vf addplugins auto_activation
     else if test "$argv[1]" = "~/code/sd/sd"
       git clone  git@github.com:daveterra/sd.git ~/code/sd
+      git clone  git@github.com:daveterra/sd_scripts.git ~/code/sd_scripts
     end
 
     echo "Dave, check your config.fish"
