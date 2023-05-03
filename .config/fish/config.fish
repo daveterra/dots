@@ -52,7 +52,7 @@ end
 source ~/.config/fish/my_functions/*.fish
 
 # Set up for SD
-set -gx SD_ROOT "$HOME/code/sd/sd_scripts/"
+set -gx SD_ROOT "$HOME/code/sd_scripts/"
 fish_add_path "$HOME/code/sd"
 
 set -gx EDITOR nvim
@@ -70,6 +70,39 @@ if status is-interactive
 
   function pipupdate -d "Update out of date packages"
     pip list -o | awk 'NR > 2 {print $1}' | xargs pip install -U
+  end
+
+  function nix-fish
+    nix-shell --command "fish"
+  end
+
+  # Changes:
+  # * Instead of overriding cd, we detect directory change. This allows the script to work
+  #   for other means of cd, such as z.
+  # * Update syntax to work with new versions of fish.
+  # * Handle virtualenvs that are not located in the root of a git directory.
+  function __auto_source_venv --on-variable PWD --description "Activate/Deactivate virtualenv on directory change"
+    status --is-command-substitution; and return
+
+    # Check if we are inside a git directory
+    if git rev-parse --show-toplevel &>/dev/null
+      set gitdir (realpath (git rev-parse --show-toplevel))
+      set cwd (pwd)
+      # While we are still inside the git directory, find the closest
+      # virtualenv starting from the current directory.
+      while string match "$gitdir*" "$cwd" &>/dev/null
+        if test -e "$cwd/.venv/bin/activate.fish"
+          source "$cwd/.venv/bin/activate.fish" &>/dev/null
+          return
+        else
+          set cwd (path dirname "$cwd")
+        end
+      end
+    end
+    # If virtualenv activated but we are not in a git directory, deactivate.
+    if test -n "$VIRTUAL_ENV"
+      deactivate
+    end
   end
 
   function ls --wraps ls -d "ls with preferred options"
@@ -116,6 +149,7 @@ if status is-interactive
   alias deepthought "ssh dave@10.173.0.2"
   alias truenas "ssh dave@10.173.0.4"
   alias glados "ssh dave@10.173.0.5"
+  alias work "ssh dave@10.173.0.11"
   alias skynet "ssh pi@10.243.24.42"
   alias nas "ssh Dave@10.173.0.3"
   alias cloud "ssh dave@terracloud.us"
@@ -143,7 +177,8 @@ if status is-interactive
       vf install
       vf addplugins auto_activation
     else if test "$argv[1]" = "sd"
-      git clone  --recurse-submodules git@github.com:daveterra/sd.git ~/code/sd
+      git clone  git@github.com:daveterra/sd.git ~/code/sd
+      git clone  git@github.com:daveterra/sd_scripts.git ~/code/sd_scripts
     end
 
     echo "Dave, check your config.fish"
