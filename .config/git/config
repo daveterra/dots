@@ -16,3 +16,5 @@
 	slog = log --graph --all --topo-order --pretty='format:%h %ai %s%d (%an)'
 [init]
 	defaultBranch = main
+[url "ssh://git@github.com/"]
+	insteadOf = https://github.com/

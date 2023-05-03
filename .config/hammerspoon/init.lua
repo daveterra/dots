@@ -189,6 +189,50 @@ wf_finder = hs.window.filter.new(appsToAutoTile)
 -- appWatcher = hs.application.watcher.new(applicationWatcher)
 -- appWatcher:start()
 
+local draw = require "hs.drawing"
+local ind = {}
+
+function doMenuBar()
+
+  local col = draw.color.x11
+
+  screen = hs.screen.mainScreen()
+  local screeng = screen:fullFrame()
+  local width = screeng.w
+  local mycol = { ['hex'] = '#f4f1ea', ['alpha']=0.5}
+  overlay_color = {['red']=0.1, ['blue']=0.1, ['green']=0.1, ['alpha']=0.8}
+  def = {mycol}
+  for i,v in ipairs(def) do
+
+    height = (screen:frame().y - screeng.y)
+     c = draw.rectangle(hs.geometry.rect(screeng.x+(width*(i-1)), screeng.y,
+                                                   width, height))
+     c:setFillColor(v)
+     c:setFill(true)
+     c:setAlpha(1.0)
+     c:setLevel(draw.windowLevels.overlay)
+     c:setStroke(false)
+     c:setBehavior(draw.windowBehaviors.canJoinAllSpaces)
+     c:show()
+     table.insert(ind, c)
+  end
+end
+
+function delIndicators()
+   if ind ~= nil then
+      for i,v in ipairs(ind) do
+         if v ~= nil then
+            v:delete()
+         end
+      end
+      ind = nil
+   end
+end
+
+
+-- doMenuBar()
+
+
 hs.loadSpoon("RoundedCorners")
 spoon.RoundedCorners:start()
 

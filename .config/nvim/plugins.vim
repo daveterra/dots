@@ -27,6 +27,9 @@ function LightMode()
     "let g:lightline = { 'colorscheme': 'PaperColor' }
 endfunction
 
+Plug 'dylanaraps/wal'
+
+" colorscheme wal
 
 " --- Telescope ---------------------------------------------------------------
 Plug 'nvim-lua/plenary.nvim'
