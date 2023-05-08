@@ -21,7 +21,7 @@ autocmd Filetype json setlocal nospell
 autocmd Filetype python setlocal colorcolumn=100
 autocmd Filetype c setlocal foldmethod=syntax
 autocmd FileType c,cpp nnoremap <buffer> gd :<c-u>call ncm2_pyclang#goto_declaration()<cr>
-autocmd! bufwritepost *.vim nested so ~/.vimrc
-autocmd! bufwritepost .tmux.conf execute ':!tmux source-file %'
+autocmd! bufwritepost *.vim nested so ~/.config/nvim/init.vim
+autocmd! bufwritepost ~/.config/tmux/tmux.conf execute ':!tmux source-file %'
 
 " vim: ft=vim fdm=marker fmr={{{,}}}:

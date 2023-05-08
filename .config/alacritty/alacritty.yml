@@ -11,16 +11,16 @@ font:
       - (macOS) Menlo
       - (Linux/BSD) monospace
       - (Windows) Consolas
-    family: mesloLGS NF
+    family: VictorMono Nerd Font
     style: Regular
 
   bold:
-    family: mesloLGS NF
+    family: VictorMono Nerd Font
     style: Bold
 
   italic:
-    family: mesloLGS NF
-    style: Italic
+    family: VictorMono Nerd Font
+    style: Oblique
 
   glyph_offset:
     x: 0
@@ -120,5 +120,9 @@ schemes:
       cyan: '0x0997b3'
       white: '0xEEEEEE'
 
+<<<<<<< HEAD
 colors: *ohlight
+=======
+colors: *ohdark
+>>>>>>> origin/main
 #end of file

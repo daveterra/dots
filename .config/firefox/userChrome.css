@@ -1,0 +1,293 @@
+@import "./sidebar2.css";
+
+/*               __                 *
+ *   _________  / /___  __________  *
+ *  / ___/ __ \/ / __ \/ ___/ ___/  *
+ * / /__/ /_/ / / /_/ / /  (__  )   *
+ * \___/\____/_/\____/_/  /____/    *
+*/
+
+
+@media (prefers-color-scheme: light) {
+  :root {
+    --dt-color-black: #383a42;
+    --dt-color-red: #e45649;
+    --dt-color-green: #50a14f;
+    --dt-color-yellow: #c18401;
+    --dt-color-blue: #0184bc;
+    --dt-color-magenta: #a626a4;
+    --dt-color-cyan: #0997b3;
+    --dt-color-white: #eaeaec;
+
+    --dt-color-bright-black: #383a42;
+    --dt-color-bright-red: #e45649;
+    --dt-color-bright-green: #50a14f;
+    --dt-color-bright-yellow: #c18401;
+    --dt-color-bright-blue: #0184bc;
+    --dt-color-bright-magenta: #a626a4;
+    --dt-color-bright-cyan: #0997b3;
+    --dt-color-bright-white: #fafafa;
+
+    --dt-background: var(--dt-color-white);
+    --dt-foreground: var(--dt-color-black);
+    --dt-secondary: var(--dt-color-bright-white);
+  }
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --dt-color-black: #282c34;
+    --dt-color-red: #e06c75;
+    --dt-color-green: #98c379;
+    --dt-color-yellow: #e5c07b;
+    --dt-color-blue: #61afef;
+    --dt-color-magenta: #c678dd;
+    --dt-color-cyan: #56b6c2;
+    --dt-color-white: #dcdfe4;
+
+    --dt-color-bright-black: #323741;
+    --dt-color-bright-red: #e06c75;
+    --dt-color-bright-green: #98c379;
+    --dt-color-bright-yellow: #e5c07b;
+    --dt-color-bright-blue: #61afef;
+    --dt-color-bright-magenta: #c678dd;
+    --dt-color-bright-cyan: #56b6c2;
+    --dt-color-bright-white: #dcdfe4;
+
+    --dt-background: var(--dt-color-black);
+    --dt-foreground: var(--dt-color-white);
+    --dt-secondary: var(--dt-color-bright-black);
+  }
+}
+
+/*
+ _   ______ ___________
+| | / / __ `/ ___/ ___/
+| |/ / /_/ / /  (__  )
+|___/\__,_/_/  /____/
+
+*/
+
+:root {
+  --dt-radius: 5px;
+
+  --toolbarbutton-border-radius: var(--dt-radius) !important;
+  --tab-border-radius: var(--dt-radius) !important;
+  --arrowpanel-border-radius: var(--dt-radius) !important;
+  --lwt-text-color: var(--uc-inverted-colour) !important;
+  --lwt-tab-text: var(--uc-inverted-colour) !important;
+  font: "mesloLGS NF";
+}
+
+/*
+                    _____                        __  _
+  _________  ____  / __(_)___ ___  ___________ _/ /_(_)___  ____
+ / ___/ __ \/ __ \/ /_/ / __ `/ / / / ___/ __ `/ __/ / __ \/ __ \
+/ /__/ /_/ / / / / __/ / /_/ / /_/ / /  / /_/ / /_/ / /_/ / / / /
+\___/\____/_/ /_/_/ /_/\__, /\__,_/_/   \__,_/\__/_/\____/_/ /_/
+                      /____/
+
+ TODO: This should start broad/general and get more specific
+*/
+
+* {
+  font-family: "mesloLGS NF" !important;
+  font-size: 13px;
+}
+
+/* Window colors */
+:root {
+  --toolbar-bgcolor: var(--dt-background) !important;
+  --tabs-border-color: var(--dt-color-blue) !important;
+  --lwt-sidebar-background-color: var(--dt-color-blue) !important;
+  --lwt-toolbar-field-focus: var(--dt-secondary) !important;
+
+  /* URL box */
+  --toolbar-field-color: var(--dt-color-green) !important;
+  --toolbar-field-focus-color: var(--dt-color-green) !important;
+  --toolbar-field-focus-background-color: var(--dt-secondary) !important;
+  /* Autocomplete suggestions */
+  --autocomplete-popup-highlight-color: var(--dt-color-blue) !important;
+  --autocomplete-popup-highlight-background: var(--dt-background) !important;
+  --autocomplete-popup-highlight-color: var(--dt-color-blue) !important;
+  --autocomplete-popup-separator-color: var(--dt-color-foreground) !important;
+  /* URL box suggestions */
+  --urlbar-popup-url-color: var(--dt-color-red) !important;
+  /* end URL box */
+
+  --toolbarbutton-border-radius: var(--dt-radius) !important;
+  --tab-border-radius: 0 !important;
+  --tab-block-margin: 0 !important;
+
+  /* buttons */
+  --toolbarbutton-icon-fill: var(--dt-color-green) !important;
+  --button-hover-bgcolor: var(--dt-secondary) !important;
+}
+
+#browser {
+  --sidebar-border-color: transparent !important;
+}
+
+window,
+#main-window,
+#toolbar-menubar,
+#TabsToolbar,
+#PersonalToolbar,
+#navigator-toolbox,
+#sidebar-box,
+#nav-bar {
+  -moz-appearance: none !important;
+  border: none !important;
+  box-shadow: none !important;
+  background: var(--dt-background) !important;
+}
+
+/* Tabs colors  */
+#tabbrowser-tabs:not([movingtab])
+  > #tabbrowser-arrowscrollbox
+  > .tabbrowser-tab
+  > .tab-stack
+  > .tab-background[multiselected="true"],
+#tabbrowser-tabs:not([movingtab])
+  > #tabbrowser-arrowscrollbox
+  > .tabbrowser-tab
+  > .tab-stack
+  > .tab-background[selected="true"] {
+  background-image: none !important;
+  background-color: var(--dt-background) !important;
+}
+
+toolbar .toolbarbutton-1:not(:hover) {
+  opacity: 0.9 !important;
+  fill: var(--dt-foreground) !important;
+  background-color: #f0f;
+}
+
+/* Sidebar color  */
+#sidebar-box,
+.sidebar-placesTree {
+  background-color: var(--dt-background) !important;
+}
+
+/* Inactive tabs color */
+#navigator-toolbox {
+  background-color: var(--dt-background) !important;
+}
+
+.urlbarView-url {
+  color: var(--dt-color-magenta) !important;
+}
+
+#PersonalToolbar toolbarbutton:not(:hover),
+#bookmarks-toolbar-button:not(:hover) {
+  filter: grayscale(1) !important;
+}
+
+/* Tabs elements  */
+
+#tabbrowser-tabs[haspinnedtabs]:not([positionpinnedtabs])
+  > #tabbrowser-arrowscrollbox
+  > .tabbrowser-tab[first-visible-unpinned-tab] {
+  margin-inline-start: 0 !important;
+}
+
+.tabbrowser-tab:is([visuallyselected="true"], [multiselected])
+  > .tab-stack
+  > .tab-background {
+  box-shadow: none !important;
+}
+
+/* Url Bar  */
+#urlbar-input-container {
+  background-color: var(--dt-secondary) !important;
+  border: 1px solid var(--dt-foreground) !important;
+}
+
+/*
+       __     __     __
+  ____/ /__  / /__  / /____
+ / __  / _ \/ / _ \/ __/ _ \
+/ /_/ /  __/ /  __/ /_/  __/
+\__,_/\___/_/\___/\__/\___/
+
+*/
+
+.tab-close-button {
+  display: none;
+}
+
+.tabbrowser-tab:not([pinned]) .tab-icon-image {
+  display: none !important;
+}
+
+#nav-bar:not([tabs-hidden="true"]) {
+  box-shadow: none;
+}
+
+#urlbar-container {
+  margin-left: 0 !important;
+}
+
+#navigator-toolbox {
+  border: none !important;
+}
+
+/*
+ * Toolbar
+ * #back-button
+ * #forward-button,
+ */
+#sidebar-header,
+#sidebar-close,
+#urlbar-zoom-button,
+#star-button-box,
+#pageActionButton,
+#pageActionSeparator,
+#tabs-newtab-button,
+#PanelUI-button,
+.tab-secondary-label {
+  display: none !important;
+}
+
+/* Disable elements
+#context-navigation,
+#context-savepage,
+#context-pocket,
+#context-sendpagetodevice,
+#context-selectall,
+#context-viewsource,
+#context-inspect-a11y,
+#context-sendlinktodevice,
+#context-openlinkinusercontext-menu,
+#context-bookmarklink,
+#context-savelink,
+#context-savelinktopocket,
+#context-sendlinktodevice,
+#context-searchselect,
+#context-sendimage,
+#context-print-selection {
+  display: none !important;
+}
+*/
+
+/*
+ * Disable elemenents
+ * #context_sendTabToDevice,
+ * #context_reopenInContainer,
+ * #context_moveTabOptions,
+*/
+#context_bookmarkTab,
+#context_selectAllTabs,
+#context_closeTabOptions {
+  display: none !important;
+}
+
+.tabbrowser-tab {
+  display: none !important;
+}
+
+#tabs-newtab-button {
+  display: none !important;
+}
+
+

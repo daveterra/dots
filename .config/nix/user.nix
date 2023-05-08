@@ -18,6 +18,9 @@ with import <nixpkgs> {}; [
   spotdl
   cbonsai
   lolcat
+  tree
+  wget
+  cowsay
   pv
   fish
   silver-searcher
@@ -25,6 +28,8 @@ with import <nixpkgs> {}; [
   fzf
   tmux
   fswatch
+  tmuxinator
+  inetutils
 
   rsync
   docker-compose

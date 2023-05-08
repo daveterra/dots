@@ -25,7 +25,7 @@ fish_add_path ~/.local/bin
 fish_add_path ~/.cargo/bin
 fish_add_path  /nix/var/nix/profiles/default/bin
 
-# Helper functions
+# Safer (but more annoying?) rm
 function recycling -d "My rm replacement"
   mkdir -p ~/.trash 1>&2 2> /dev/null
   set CURRENTDIR (pwd)
@@ -37,7 +37,23 @@ function recycling -d "My rm replacement"
   end
 end
 
+function setDarkMode --argument darkmode
+  set file (/bin/ls /tmp/mykitty*)
+  alias kitty /Applications/kitty.app/Contents/MacOS/kitty
+  if $darkmode
+    echo "Darkmode is on: $file" > /tmp/hello.txt
+    kitty @ --to "unix:$file" set-colors -a -c ~/.config/kitty/ohdark.conf > /tmp/out.txt 2> /tmp/out.txt
+  else
+    echo "Darkmode is off: $file" > /tmp/hello.txt
+    kitty @ --to "unix:$file" set-colors -a -c ~/.config/kitty/ohlight.conf > /tmp/out.txt 2> /tmp/out.txt
+  end
+end
+
 source ~/.config/fish/my_functions/*.fish
+
+# Set up for SD
+set -gx SD_ROOT "$HOME/code/sd_scripts/"
+fish_add_path "$HOME/code/sd"
 
 set -gx EDITOR nvim
 
@@ -48,20 +64,45 @@ if status is-interactive
 
   # Set locations for tools so $HOME isn't clogged up
   set -gx CHTSH_CONF "$XDG_CONFIG_HOME/cht.sh/cht.sh.conf"
-  set -gx SD_ROOT "$HOME/code/sd/sd_scripts/"
   set -gx _ZO_DATA_DIR "$XDG_DATA_HOME/z/"
   set -gx YARN_RC_FILENAME "$XDG_CONFIG_HOME/yarn/yarnrc"
   set -gx WGETRC "$XDG_CONFIG_HOME/wget/wgetrc"
 
-  # Dumb stock stuff
-  set -gx ALPHAVANTAGE_API_KEY "D8UNN6TF6CBFUELX"
-  function stock -d "Get a quote" -a ticker
-    # or use tstock...
-    curl "https://www.alphavantage.co/query?function=GLOBAL_QUOTE&symbol=$ticker&apikey=$ALPHAVANTAGE_API_KEY"
-  end
-
   function pipupdate -d "Update out of date packages"
     pip list -o | awk 'NR > 2 {print $1}' | xargs pip install -U
+  end
+
+  function nix-fish
+    nix-shell --command "fish"
+  end
+
+  # Changes:
+  # * Instead of overriding cd, we detect directory change. This allows the script to work
+  #   for other means of cd, such as z.
+  # * Update syntax to work with new versions of fish.
+  # * Handle virtualenvs that are not located in the root of a git directory.
+  function __auto_source_venv --on-variable PWD --description "Activate/Deactivate virtualenv on directory change"
+    status --is-command-substitution; and return
+
+    # Check if we are inside a git directory
+    if git rev-parse --show-toplevel &>/dev/null
+      set gitdir (realpath (git rev-parse --show-toplevel))
+      set cwd (pwd)
+      # While we are still inside the git directory, find the closest
+      # virtualenv starting from the current directory.
+      while string match "$gitdir*" "$cwd" &>/dev/null
+        if test -e "$cwd/.venv/bin/activate.fish"
+          source "$cwd/.venv/bin/activate.fish" &>/dev/null
+          return
+        else
+          set cwd (path dirname "$cwd")
+        end
+      end
+    end
+    # If virtualenv activated but we are not in a git directory, deactivate.
+    if test -n "$VIRTUAL_ENV"
+      deactivate
+    end
   end
 
   function ls --wraps ls -d "ls with preferred options"
@@ -108,12 +149,13 @@ if status is-interactive
   alias deepthought "ssh dave@10.173.0.2"
   alias truenas "ssh dave@10.173.0.4"
   alias glados "ssh dave@10.173.0.5"
+  alias work "ssh dave@10.173.0.11"
   alias skynet "ssh pi@10.243.24.42"
   alias nas "ssh Dave@10.173.0.3"
   alias cloud "ssh dave@terracloud.us"
   alias router "ssh admin@10.173.0.1"
   alias myip "curl ipinfo.io/ip"
-  alias sd "~/code/sd/sd"
+
   # https://blog.benoitj.ca/2020-10-03-chezmoi-merging/
   alias cmm="chezmoi diff --use-builtin-diff | grep 'diff --git' | cut -f3 -d ' ' | sed 's/a\//~\//' | xargs -r chezmoi merge"
   abbr rm recycling
@@ -135,8 +177,9 @@ if status is-interactive
       python -m pip install virtualfish
       vf install
       vf addplugins auto_activation
-    else if test "$argv[1]" = "~/code/sd/sd"
+    else if test "$argv[1]" = "sd"
       git clone  git@github.com:daveterra/sd.git ~/code/sd
+      git clone  git@github.com:daveterra/sd_scripts.git ~/code/sd_scripts
     end
 
     echo "Dave, check your config.fish"
