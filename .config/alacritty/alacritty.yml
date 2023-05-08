@@ -120,9 +120,5 @@ schemes:
       cyan: '0x0997b3'
       white: '0xEEEEEE'
 
-<<<<<<< HEAD
 colors: *ohlight
-=======
-colors: *ohdark
->>>>>>> origin/main
 #end of file

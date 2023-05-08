@@ -1,3 +1,8 @@
+hs.hotkey.bind({"cmd", "alt", "ctrl"}, "W", function()
+  local current = hs.preferencesDarkMode()
+  local darkmode = hs.osascript.applescript('tell application "System Events"\nreturn dark mode of appearance preferences\nend tell')
+  hs.osascript.applescript('tell app "System Events" to tell appearance preferences to set dark mode to not dark mode')
+end)
 
 local grid = hs.geometry.size(6, 6)
 hs.grid.setGrid(grid)
@@ -8,44 +13,30 @@ hs.hotkey.bind({"cmd", "alt", "ctrl"}, "Return", function()
   hs.grid.toggleShow()
 end)
 
+hs.hotkey.bind({"cmd", "alt", "ctrl"}, "Up", function()
+  local win = hs.window.focusedWindow()
+  hs.grid.set(win, hs.geometry.rect(0,0,6,3))
+end)
+
+hs.hotkey.bind({"cmd", "alt", "ctrl"}, "Down", function()
+  local win = hs.window.focusedWindow()
+  hs.grid.set(win, hs.geometry.rect(0,3,6,3))
+end)
+
 hs.hotkey.bind({"cmd", "alt", "ctrl"}, "Left", function()
   local win = hs.window.focusedWindow()
-  local f = win:frame()
-  local screen = win:screen()
-  local max = screen:frame()
-
-  f.x = max.x
-  f.y = max.y
-  f.w = max.w / 2
-  f.h = max.h
-  win:setFrame(f)
+  hs.grid.set(win, hs.geometry.rect(0,0,3,6))
 end)
 
 hs.hotkey.bind({"cmd", "alt", "ctrl"}, "Right", function()
   local win = hs.window.focusedWindow()
-  local f = win:frame()
-  local screen = win:screen()
-  local max = screen:frame()
-
-  f.x = max.x + (max.w / 2)
-  f.y = max.y
-  f.w = max.w / 2
-  f.h = max.h
-  win:setFrame(f)
+  hs.grid.set(win, hs.geometry.rect(3,0,3,6))
 end)
 
 hs.hotkey.bind({"cmd", "alt", "ctrl"}, "/", function()
   local win = hs.window.focusedWindow()
   hs.grid.maximizeWindow(win)
-  --  local f = win:frame()
-  --  local screen = win:screen()
-  --  local max = screen:frame()
-  --
-  --  f.x = max.x + 20
-  --  f.y = max.y + 20
-  --  f.w = max.w - 40
-  --  f.h = max.h - 40
-  --  win:setFrame(f)
+  arrangeAllWindows()
 end)
 
 function reloadConfig(files)
@@ -59,12 +50,6 @@ function reloadConfig(files)
         hs.reload()
     end
 end
-
-hs.hotkey.bind({"cmd", "alt", "ctrl"}, "W", function()
-  local current = hs.preferencesDarkMode()
-  local darkmode = hs.osascript.applescript('tell application "System Events"\nreturn dark mode of appearance preferences\nend tell')
-  hs.osascript.applescript('tell app "System Events" to tell appearance preferences to set dark mode to not dark mode')
-end)
 
 darkModeMenu = hs.menubar.new()
 function setDarkModeMenu(enabled)
@@ -81,10 +66,10 @@ function darkModeMenuClicked()
   setDarkModeMenu(darkmode)
   hs.alert.show(darkmode)
   if darkmode then
-    local task = hs.task.new("/opt/homebrew/bin/fish", nil, {"-c", "alacritty-theme ohdark"})
+    local task = hs.task.new("/opt/homebrew/bin/fish", nil, {"-c", "setDarkMode true"})
     task:start()
   else
-    local task = hs.task.new("/opt/homebrew/bin/fish", nil, {"-c", "alacritty-theme ohlight"})
+    local task = hs.task.new("/opt/homebrew/bin/fish", nil, {"-c", "setDarkMode false"})
     task:start()
   end
 end
@@ -114,39 +99,141 @@ if caffeine then
     setCaffeineDisplay(hs.caffeinate.get("displayIdle"))
 end
 
+function arrangeAllWindows()
+  local windows = hs.window.allWindows()
+  hs.alert.show(string.format("Arranging %s windows", #windows))
+  for i = 1, #windows do
+    hs.grid.snap(windows[i])
+  end
+end
+
+function finderWatcher(element, event, watcher, data)
+  hs.alert.show("Hey there")
+end
+
 function applicationWatcher(appName, eventType, appObject)
     if (eventType == hs.application.watcher.activated) then
-        if (appName == "BFinder") then
+        hs.alert.show(appName)
+        if (appName == "Finder") then
             -- Bring all Finder windows forward when one gets activated
             appObject:selectMenuItem({"Window", "Bring All to Front"})
             local wins = appObject:allWindows()
             hs.alert.show(#wins)
+
             local win = hs.window.focusedWindow()
-            local f = win:frame()
             local screen = win:screen()
             local max = screen:frame()
-            local cols = 4
-            local rows = 4
+
+            element = hs.uielement.focusedElement()
+            local watcher = element:newWatcher(finderWatcher)
+            watcher:start({hs.uielement.watcher.windowCreated, hs.uielement.watcher.focusedWindowChanged, hs.uielement.watcher.focusedElementChanged})
+
             for i = 1, #wins do
-              print(wins[i])  -- Indices start at 1 !! SO CRAZY!
-              local x = max.x + (max.w / cols)*((i-1)%2)
-              local y = max.y + (max.h / rows)*0
-              local w = max.w / cols
-              local h = max.h / rows
-              local rect = hs.geometry.rect(x, y, w, h)
-              local f = wins[i]:frame()
-              wins[i]:setFrame(rect)
-              local rect = hs.geometry.rect((i-1)%3, 0, 1, 3)
-              hs.grid.set(wins[i], rect)
+              id = wins[i]:id()
+              if id == 0 then
+                wins[i] = nil
+              end
             end
+
+            hs.window.tiling.tileWindows(wins, max)
         end
     end
 end
-appWatcher = hs.application.watcher.new(applicationWatcher)
-appWatcher:start()
+
+local appsToAutoTile = {"Finder", "Firefox"}
+
+function autoTile(this_win, app_name, event)
+  -- local wins =  this_win:application():allWindows()
+  local wf = hs.window.filter.new(app_name)
+	:setOverrideFilter({
+		rejectTitles = { "^Quick Look$", "^Move$", "^Copy$", "^Finder Settings$", " Info$", "^$" }, 	 allowRoles = "AXStandardWindow",
+    hasTitlebar = true,
+	})
+  local wins = wf:getWindows()
+
+  if #wins == 1 then
+    hs.grid.maximizeWindow(wins[1])
+  elseif #wins == 2 then
+    hs.grid.set(wins[1], hs.geometry.rect(0,0,3,6))
+    hs.grid.set(wins[2], hs.geometry.rect(3,0,3,6))
+  elseif #wins == 3 then
+    hs.grid.set(wins[1], hs.geometry.rect(0,0,2,6))
+    hs.grid.set(wins[2], hs.geometry.rect(2,0,2,6))
+    hs.grid.set(wins[3], hs.geometry.rect(4,0,2,6))
+  elseif #wins == 4 then
+    hs.grid.set(wins[1], hs.geometry.rect(0,0,3,3))
+    hs.grid.set(wins[2], hs.geometry.rect(3,0,3,3))
+    hs.grid.set(wins[3], hs.geometry.rect(0,3,3,3))
+    hs.grid.set(wins[4], hs.geometry.rect(3,3,3,3))
+  else
+    local max = hs.window.focusedWindow():screen():frame()
+    hs.window.tiling.tileWindows(wins, max)
+  end
+
+  if #wins > 1 then
+		local app = hs.application.frontmostApplication()
+		app:selectMenuItem { "Window", "Bring All to Front" }
+	end
+end
+
+wf_finder = hs.window.filter.new(appsToAutoTile)
+	:setOverrideFilter({
+		-- exclude various special windows for Finder.app
+    -- "^$" excludes the Desktop, which has no window title
+		rejectTitles = { "^Quick Look$", "^Move$", "^Copy$", "^Finder Settings$", " Info$", "^$" }, 	 allowRoles = "AXStandardWindow",
+    hasTitlebar = true,
+	})
+	:subscribe(hs.window.filter.windowCreated, autoTile)
+	:subscribe(hs.window.filter.windowDestroyed, autoTile)
+
+-- appWatcher = hs.application.watcher.new(applicationWatcher)
+-- appWatcher:start()
+
+local draw = require "hs.drawing"
+local ind = {}
+
+function doMenuBar()
+
+  local col = draw.color.x11
+
+  screen = hs.screen.mainScreen()
+  local screeng = screen:fullFrame()
+  local width = screeng.w
+  local mycol = { ['hex'] = '#f4f1ea', ['alpha']=0.5}
+  overlay_color = {['red']=0.1, ['blue']=0.1, ['green']=0.1, ['alpha']=0.8}
+  def = {mycol}
+  for i,v in ipairs(def) do
+
+    height = (screen:frame().y - screeng.y)
+     c = draw.rectangle(hs.geometry.rect(screeng.x+(width*(i-1)), screeng.y,
+                                                   width, height))
+     c:setFillColor(v)
+     c:setFill(true)
+     c:setAlpha(1.0)
+     c:setLevel(draw.windowLevels.overlay)
+     c:setStroke(false)
+     c:setBehavior(draw.windowBehaviors.canJoinAllSpaces)
+     c:show()
+     table.insert(ind, c)
+  end
+end
+
+function delIndicators()
+   if ind ~= nil then
+      for i,v in ipairs(ind) do
+         if v ~= nil then
+            v:delete()
+         end
+      end
+      ind = nil
+   end
+end
+
+
+-- doMenuBar()
 
 hs.loadSpoon("RoundedCorners")
 spoon.RoundedCorners:start()
 
-myWatcher = hs.pathwatcher.new(os.getenv("HOME") .. "/.hammerspoon/", reloadConfig):start()
+myWatcher = hs.pathwatcher.new(os.getenv("HOME") .. "/.config/hammerspoon/", reloadConfig):start()
 hs.alert.show("Config loaded")
