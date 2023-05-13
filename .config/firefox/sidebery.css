@@ -62,7 +62,7 @@
   --tabs-height: 38px !important;
   --tabs-spacing: 4px;
   --tabs-indent: 10px !important;
-  --tabs-font: "mesloLGS NF" !important;
+  --tabs-font: "VictorMono Nerd Font" !important;
   --bg: var(--dt-background) !important;
 }
 
@@ -96,8 +96,8 @@
   padding-left: 5px;
 }
 
-.Sidebar .panel-btn > svg,
-.Sidebar .panel-btn > img {
+.Sidebar .panel-btn>svg,
+.Sidebar .panel-btn>img {
   width: 20px !important;
   height: 20px !important;
 }
@@ -192,7 +192,7 @@
   mask: linear-gradient(-90deg, transparent, #000 25px, #000);
 }
 
-.Tab .close > svg:hover {
+.Tab .close>svg:hover {
   background: rgba(0, 0, 0, 0.075);
   border-radius: 4px;
 }
@@ -289,6 +289,7 @@
     float: left !important;
     margin-left: 5px;
   }
+
   .PinnedTab .ctx {
     opacity: 0;
   }
