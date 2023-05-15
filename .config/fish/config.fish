@@ -91,8 +91,8 @@ if status is-interactive
       # While we are still inside the git directory, find the closest
       # virtualenv starting from the current directory.
       while string match "$gitdir*" "$cwd" &>/dev/null
-        if test -e "$cwd/.venv/bin/activate.fish"
-          source "$cwd/.venv/bin/activate.fish" &>/dev/null
+        if count $cwd/.venv**activate.fish &>/dev/null
+          source $cwd/.venv**activate.fish &>/dev/null
           return
         else
           set cwd (path dirname "$cwd")
