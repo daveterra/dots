@@ -64,11 +64,11 @@ set foldmethod=syntax
 let g:indentLine_char = '⦙'
 
 " Keep the current line centered
-augroup VCenterCursor
-  au!
-  au BufEnter,WinEnter,WinNew,VimResized *,*.*
-        \ let &scrolloff=winheight(win_getid())/2
-augroup END
+" augroup VCenterCursor
+  " au!
+  " au BufEnter,WinEnter,WinNew,VimResized *,*.*
+        " \ let &scrolloff=winheight(win_getid())/2
+" augroup END
 
 hi Keyword gui=italic cterm=italic
 hi Statement gui=italic cterm=italic
@@ -111,6 +111,13 @@ noremap <C-h> <C-w>h
 noremap <C-j> <C-w>j
 noremap <C-k> <C-w>k
 noremap <C-l> <C-w>l
+
+" Center the cursor when searching and paging
+nnoremap n nzzzv
+nnoremap N Nzzzv
+noremap <C-d> <C-d>zz
+noremap <C-u> <C-u>zz
+
 nnoremap <leader>t :CtrlP<CR>
 noremap <leader><space> :call whitespace#strip_trailing()<CR>
 nnoremap <leader>a :Ack<space>
