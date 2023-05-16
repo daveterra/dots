@@ -39,14 +39,16 @@ function recycling -d "My rm replacement"
 end
 
 function setDarkMode --argument darkmode
-  set file (/bin/ls /tmp/mykitty*)
-  alias kitty /Applications/kitty.app/Contents/MacOS/kitty
-  if $darkmode
-    echo "Darkmode is on: $file" > /tmp/hello.txt
-    kitty @ --to "unix:$file" set-colors -a -c ~/.config/kitty/ohdark.conf > /tmp/out.txt 2> /tmp/out.txt
-  else
-    echo "Darkmode is off: $file" > /tmp/hello.txt
-    kitty @ --to "unix:$file" set-colors -a -c ~/.config/kitty/ohlight.conf > /tmp/out.txt 2> /tmp/out.txt
+  for file in (/bin/ls /tmp/mykitty*)
+
+    alias kitty /Applications/kitty.app/Contents/MacOS/kitty
+    if $darkmode
+      echo "Darkmode is on: $file" > /tmp/hello.txt
+      kitty @ --to "unix:$file" set-colors -a -c ~/.config/kitty/ohdark.conf > /tmp/out.txt 2> /tmp/out.txt
+    else
+      echo "Darkmode is off: $file" > /tmp/hello.txt
+      kitty @ --to "unix:$file" set-colors -a -c ~/.config/kitty/ohlight.conf > /tmp/out.txt 2> /tmp/out.txt
+    end
   end
 end
 

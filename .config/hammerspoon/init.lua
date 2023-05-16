@@ -1,8 +1,4 @@
-hs.hotkey.bind({"cmd", "alt", "ctrl"}, "W", function()
-  local current = hs.preferencesDarkMode()
-  local darkmode = hs.osascript.applescript('tell application "System Events"\nreturn dark mode of appearance preferences\nend tell')
-  hs.osascript.applescript('tell app "System Events" to tell appearance preferences to set dark mode to not dark mode')
-end)
+require "darkmenu"
 
 local grid = hs.geometry.size(6, 6)
 hs.grid.setGrid(grid)
@@ -49,36 +45,6 @@ function reloadConfig(files)
     if doReload then
         hs.reload()
     end
-end
-
-darkModeMenu = hs.menubar.new()
-function setDarkModeMenu(enabled)
-  if enabled then
-    darkModeMenu:setTitle("🌑")
-  else
-    darkModeMenu:setTitle("🌝")
-  end
-end
-
-function darkModeMenuClicked()
-  hs.osascript.applescript('tell app "System Events" to tell appearance preferences to set dark mode to not dark mode')
-  local success, darkmode = hs.osascript.applescript('tell app "System Events" to tell appearance preferences to return dark mode')
-  setDarkModeMenu(darkmode)
-  hs.alert.show(darkmode)
-  if darkmode then
-    local task = hs.task.new("/opt/homebrew/bin/fish", nil, {"-c", "setDarkMode true"})
-    task:start()
-  else
-    local task = hs.task.new("/opt/homebrew/bin/fish", nil, {"-c", "setDarkMode false"})
-    task:start()
-  end
-end
-
-if darkModeMenu then
-  darkModeMenu:setClickCallback(darkModeMenuClicked)
-  local success, darkmode = hs.osascript.applescript('tell app "System Events" to tell appearance preferences to return dark mode')
-  hs.alert.show(darkmode)
-  setDarkModeMenu(darkmode)
 end
 
 caffeine = hs.menubar.new()
