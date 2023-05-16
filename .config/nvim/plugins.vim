@@ -43,7 +43,7 @@ nnoremap <leader>fh <cmd>Telescope help_tags<cr>
 Plug 'Shougo/neoinclude.vim'
 Plug 'godlygeek/tabular'
 Plug 'Konfekt/FastFold'
-Plug 'preservim/nerdtree'
+" Plug 'preservim/nerdtree'
 Plug 'tpope/vim-fugitive'
 Plug 'airblade/vim-gitgutter'
 Plug 'dag/vim-fish'
@@ -152,6 +152,9 @@ let g:NERDCompactSexyComs = 0
 Plug '/tmp/testPlug'
 Plug 'tpope/vim-obsession'
 Plug 'folke/which-key.nvim'
+" A vim game to get better
+" From this guy: https://www.youtube.com/watch?v=X6AR2RMB5tE
+Plug 'ThePrimeagen/vim-be-good'
 
 "------------------------------------------------------------------------------"
 "                                      End                                     "
@@ -188,7 +191,8 @@ EOF
 
 
 lua << EOF
-  vim.keymap.set("n", "z", function()
+  vim.keymap.set("n", "<leader>z", function()
+      print("Hello")
       vim.lsp.buf_request(
           0,
           "textDocument/signatureHelp",
@@ -199,6 +203,7 @@ lua << EOF
       )
   end)
 EOF
+
 " * source ~/.config/nvim/plugins/ncm.vim
 " * source ~/.config/nvim/plugins/syntastic.vim
 " * Plug 'jsfaint/gen_tags.vim'

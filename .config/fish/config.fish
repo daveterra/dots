@@ -17,6 +17,7 @@ set -gx LC_ALL en_US.UTF-8
 set -gx LANG en_US.UTF-8
 set -gx LANGUAGE en_US.UTF-8
 set -gx LOCALE_ARCHIVE /usr/lib/locale/locale-archive
+set -gx SHELL (which fish)
 
 # Add to path
 fish_add_path "$HOME/.cargo/bin"

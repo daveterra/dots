@@ -36,8 +36,9 @@ set laststatus=3               " always show statusline
 set list                       " show trailing whitespace
 set listchars=tab:▸\ ,trail:▫,extends:>,precedes:<
 set number                     " show line numbers
+set relativenumber             " Number gutter shows relative numbers
 set ruler                      " show where you are
-set scrolloff=999              " show context above/below cursorline
+" set scrolloff=999              " show context above/below cursorline
 set showcmd
 set smartcase                  " case-sensitive search if any caps
 set wildmenu                   " show a navigable menu for tab completion
@@ -113,7 +114,7 @@ noremap <C-l> <C-w>l
 nnoremap <leader>t :CtrlP<CR>
 noremap <leader><space> :call whitespace#strip_trailing()<CR>
 nnoremap <leader>a :Ack<space>
-noremap <silent> <leader>V :source ~/.vimrc<CR>:filetype detect<CR>:exe ":echo 'vimrc reloaded'"<CR>
+noremap <silent> <leader>V :source ~/.config/nvim/init.vim<CR>:filetype detect<CR>:exe ":echo 'vimrc reloaded'"<CR>
 nmap <leader>1 1gt
 nmap <leader>2 2gt
 nmap <leader>3 3gt
@@ -124,8 +125,8 @@ nmap <leader>7 7gt
 nmap <leader>8 8gt
 nmap <leader>9 9gt
 nmap <leader>0 0gt
-nmap t gt
-nmap T gT
+nmap s gt
+nmap S gT
 nmap // :let @/ = ""<CR><CR>
 " in case you forgot to sudo
 cnoremap w!! %!sudo tee > /dev/null %
