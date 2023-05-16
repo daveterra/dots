@@ -76,7 +76,7 @@
   --arrowpanel-border-radius: var(--dt-radius) !important;
   --lwt-text-color: var(--uc-inverted-colour) !important;
   --lwt-tab-text: var(--uc-inverted-colour) !important;
-  font: "mesloLGS NF";
+  font: "VictorMono Nerd Font";
 }
 
 /*
@@ -91,7 +91,7 @@
 */
 
 * {
-  font-family: "mesloLGS NF" !important;
+  font-family: "VictorMono Nerd Font" !important;
   font-size: 13px;
 }
 
@@ -143,16 +143,8 @@ window,
 }
 
 /* Tabs colors  */
-#tabbrowser-tabs:not([movingtab])
-  > #tabbrowser-arrowscrollbox
-  > .tabbrowser-tab
-  > .tab-stack
-  > .tab-background[multiselected="true"],
-#tabbrowser-tabs:not([movingtab])
-  > #tabbrowser-arrowscrollbox
-  > .tabbrowser-tab
-  > .tab-stack
-  > .tab-background[selected="true"] {
+#tabbrowser-tabs:not([movingtab])>#tabbrowser-arrowscrollbox>.tabbrowser-tab>.tab-stack>.tab-background[multiselected="true"],
+#tabbrowser-tabs:not([movingtab])>#tabbrowser-arrowscrollbox>.tabbrowser-tab>.tab-stack>.tab-background[selected="true"] {
   background-image: none !important;
   background-color: var(--dt-background) !important;
 }
@@ -185,15 +177,11 @@ toolbar .toolbarbutton-1:not(:hover) {
 
 /* Tabs elements  */
 
-#tabbrowser-tabs[haspinnedtabs]:not([positionpinnedtabs])
-  > #tabbrowser-arrowscrollbox
-  > .tabbrowser-tab[first-visible-unpinned-tab] {
+#tabbrowser-tabs[haspinnedtabs]:not([positionpinnedtabs])>#tabbrowser-arrowscrollbox>.tabbrowser-tab[first-visible-unpinned-tab] {
   margin-inline-start: 0 !important;
 }
 
-.tabbrowser-tab:is([visuallyselected="true"], [multiselected])
-  > .tab-stack
-  > .tab-background {
+.tabbrowser-tab:is([visuallyselected="true"], [multiselected])>.tab-stack>.tab-background {
   box-shadow: none !important;
 }
 
@@ -289,5 +277,3 @@ toolbar .toolbarbutton-1:not(:hover) {
 #tabs-newtab-button {
   display: none !important;
 }
-
-

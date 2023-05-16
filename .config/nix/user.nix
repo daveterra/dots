@@ -32,6 +32,7 @@ with import <nixpkgs> {}; [
   inetutils
 
   rsync
+  ripgrep
   docker-compose
   git
   nix
