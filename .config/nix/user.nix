@@ -37,4 +37,10 @@ with import <nixpkgs> {}; [
   git
   nix
   mosh
+
+  python39Packages.python-lsp-server
+  helix
+
+  # fun
+  asciiquarium
 ]
