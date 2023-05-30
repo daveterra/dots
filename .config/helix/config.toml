@@ -1,5 +1,13 @@
 theme = "onelight"
+
 [editor]
 line-number = "relative"
 mouse = false
+bufferline = "always"
+# rulers = [80]
 
+[keys.normal]
+0 = "goto_line_start" # From vim. I don't have Home/End keys
+"$" = "goto_line_end"
+"#" = "shell_keep_pipe"
+g = { a = "code_action" } # Maps `ga` to show possible code actions
