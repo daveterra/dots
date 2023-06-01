@@ -46,7 +46,7 @@ source ~/.config/fish/my_functions/*.fish
 set -gx SD_ROOT "$HOME/code/sd_scripts/"
 fish_add_path "$HOME/code/sd"
 
-set -gx EDITOR nvim
+set -gx EDITOR hx
 
 if status is-interactive
   set -gx DEFAULT_USER dave
@@ -141,6 +141,7 @@ if status is-interactive
   alias cloud "ssh dave@terracloud.us"
   alias router "ssh admin@10.173.0.1"
   alias myip "curl ipinfo.io/ip"
+  alias notes "cd ~/Notes && hx ."
 
   alias config "git --git-dir=$XDG_DATA_HOME/dots --work-tree=$HOME $argv"
   set -U fish_key_bindings fish_vi_key_bindings

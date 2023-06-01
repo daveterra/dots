@@ -14,7 +14,6 @@ with import <nixpkgs> {}; [
   neovim
   nmap
   starship
-  nodejs
   spotdl
   cbonsai
   lolcat

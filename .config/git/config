@@ -2,7 +2,7 @@
 	name = Dave Terra
 	email = 11788035+daveterra@users.noreply.github.com
 [core]
-	editor = nvim
+	editor = hx
 [alias]
 	co = checkout
 	ci = commit
