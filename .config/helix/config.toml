@@ -6,6 +6,9 @@ mouse = false
 bufferline = "always"
 color-modes = true
 
+[editor.cursor-shape]
+insert = "bar"
+
 # [editor.statusline]
 # left = ["mode", "spinner", "version-control"]
 # center = ["filename", "file-modification-indicator"]
