@@ -26,7 +26,12 @@ display-messages  = true
 # "$" = "goto_line_end"
 # "#" = "shell_keep_pipe"
 g = { a = "code_action" } # Maps `ga` to show possible code actions
-# C-s = ":w"
+A-s = ":w"
+A-w = ":bc"
+
+[keys.insert]
+A-s = ":w"
+A-w = ":bc"
 
 # These just seemed backwards to me, I is LEFT of O (aka backwards)
 # but, alas, the remapping does not seem to work...

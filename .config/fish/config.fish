@@ -67,6 +67,12 @@ if status is-interactive
     nix-shell --command "fish"
   end
 
+  # bind \t complete
+  # bind \t forward-word
+  # bind \t complete-no-pager
+  # bind \t cancel
+  # bind \t forward-word complete
+
   # Changes:
   # * Instead of overriding cd, we detect directory change. This allows the script to work
   #   for other means of cd, such as z.
