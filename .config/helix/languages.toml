@@ -7,13 +7,15 @@ formatter = { command = "black", args = ["--quiet", "-"] }
 auto-format = true
 
 [[language]]
+name = "rust"
+rulers = [128]
+
+[[language]]
 name = "javascript"
+formatter = { command = 'prettier', args = ["--parser", "typescript"] }
 auto-format = true
 
 [[language]]
 name = "typescript"
 auto-format = true
 
-[[language]]
-name = "tsx"
-auto-format = true
