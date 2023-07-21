@@ -23,7 +23,7 @@ with import <nixpkgs> {}; [
   pv
   fish
   silver-searcher
-  python3
+  python310
   fzf
   tmux
   fswatch
@@ -38,11 +38,14 @@ with import <nixpkgs> {}; [
   mosh
 
   # Helix and LSPs
-  python39Packages.python-lsp-server
+  python310Packages.python-lsp-server
   marksman
   helix
 
   # fun
   asciiquarium
+
+
+# graph-easy
 
 ]
