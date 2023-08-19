@@ -3,7 +3,6 @@ with import <nixpkgs> {}; [
   bitwarden-cli
   boxes
   chafa
-  chezmoi
   ctags
   ddgr
   dust
