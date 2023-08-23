@@ -1,48 +1,53 @@
 with import <nixpkgs> {}; [
-  aspell
-  bitwarden-cli
-  boxes
-  chafa
-  chezmoi
-  ctags
-  ddgr
+  # Command line tools 
+  fish
+  zoxide # replaces cd 
+  exa # replaces ls 
+  silver-searcher # ag 
   dust
-  figlet
   jq
-  lazygit
-  neofetch
-  neovim
-  nmap
-  starship
-  spotdl
-  cbonsai
-  lolcat
   tree
   wget
-  cowsay
   pv
-  fish
-  silver-searcher
-  python3
-  fzf
   tmux
-  fswatch
-  tmuxinator
-  inetutils
-
-  rsync
-  ripgrep
-  docker-compose
+  fzf
+  starship
   git
+  ripgrep
+  aspell
+  lazygit
+  bitwarden-cli
+  docker-compose
   nix
-  mosh
+  rsync
+  tmuxinator
+  fswatch
+  nmap
+  python310
+  inetutils
+  # ddgr # duck duck go from
+  # mosh # an ssh wrapper
+  
+  # Fun-like utils
+  neofetch
+  lolcat
+  cowsay
+  figlet
+  boxes
+  asciiquarium
+  cbonsai
+  # graph-easy
+
+  # Currently disabled
+  # spotdl
+  # neovim
+  # ctags
+  # chafa # image viewer
 
   # Helix and LSPs
-  python39Packages.python-lsp-server
+  python310Packages.python-lsp-server
   marksman
   helix
 
   # fun
-  asciiquarium
-
 ]
