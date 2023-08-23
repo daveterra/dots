@@ -104,12 +104,14 @@ if status is-interactive
 
   function ls --wraps ls -d "ls with preferred options"
     # command ls --group-directories-first --color=always -F1 "$argv"
-    command ls -a --color=always -F $argv
+    # command ls -a --color=always -F $argv
+    command exa -a  --icons --group-directories-first $argv
   end
 
-  function cd -d "cd and then ls"
-    builtin cd $argv && ls
-  end
+  zoxide init --cmd cd fish | source
+  # function cd -d "cd and then ls"
+  #   builtin cd $argv && ls
+  # end
 
   function please -d "Run the last command as sudo"
       eval command sudo $history[1]
@@ -131,12 +133,14 @@ if status is-interactive
       curl cheat.sh/$argv
   end
 
+  alias cheat cheat.sh
+
   # Alias
-  alias vi nvim
-  alias vim nvim
+  alias vi hx # nvim
+  alias vim hx # nvim
   alias ll "ls -alh"
   alias gap "git add --patch -i"
-  alias btc "ssh cointop.sh"
+  # alias btc "ssh cointop.sh"
   alias mutt "neomutt -d 5 -l ~/.neomutt.log"
   alias deepthought "ssh dave@10.173.0.2"
   alias truenas "ssh dave@10.173.0.4"
