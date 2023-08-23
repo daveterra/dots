@@ -178,6 +178,9 @@ if status is-interactive
   end
 
   starship init fish | source
+
+  __auto_source_venv
+
 end
 
 
