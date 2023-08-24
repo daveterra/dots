@@ -1,6 +1,7 @@
 with import <nixpkgs> {}; [
   # Command line tools 
   fish
+  bash # Needed for tmux/extracto, also just nice to have newer version
   zoxide # replaces cd 
   exa # replaces ls 
   silver-searcher # ag 
