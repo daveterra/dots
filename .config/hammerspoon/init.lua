@@ -1,5 +1,8 @@
 require "darkmenu"
 
+-- Disable some global hotkeys
+hs.hotkey.bind("cmd", "H", function() end)
+
 local grid = hs.geometry.size(6, 6)
 hs.grid.setGrid(grid)
 hs.grid.setMargins(hs.geometry.size(5,5))

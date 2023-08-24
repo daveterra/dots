@@ -108,6 +108,7 @@ if status is-interactive
     command exa -a  --icons --group-directories-first $argv
   end
 
+  complete -e cd
   zoxide init --cmd cd fish | source
   # function cd -d "cd and then ls"
   #   builtin cd $argv && ls

@@ -47,8 +47,16 @@ with import <nixpkgs> {}; [
 
   # Helix and LSPs
   python310Packages.python-lsp-server
+  # vscode-langservers-extracted
+  nodePackages_latest.vscode-langservers-extracted
+  nodePackages_latest.bash-language-server
   marksman
   helix
 
+  # Other dev, though this should all be local...
+  nodejs
+  yarn
+  arduino-cli
+  
   # fun
 ]
