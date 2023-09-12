@@ -59,6 +59,10 @@ if status is-interactive
   set -gx YARN_RC_FILENAME "$XDG_CONFIG_HOME/yarn/yarnrc"
   set -gx WGETRC "$XDG_CONFIG_HOME/wget/wgetrc"
 
+  # For tmux history search
+  set -U FZF_CTRL_R_OPTS "--reverse"
+  set -U FZF_TMUX_OPTS "-p" 
+
   function pipupdate -d "Update out of date packages"
     pip list -o | awk 'NR > 2 {print $1}' | xargs pip install -U
   end
