@@ -5,6 +5,7 @@ line-number = "relative"
 mouse = false
 bufferline = "always"
 color-modes = true
+soft-wrap.enable = true
 
 [editor.cursor-shape]
 insert = "bar"
@@ -20,6 +21,7 @@ character = "┊"
 
 [editor.lsp]
 display-messages  = true
+display-inlay-hints = true
 
 [keys.normal]
 g = { a = "code_action" } # Maps `ga` to show possible code actions

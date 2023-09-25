@@ -109,7 +109,7 @@ if status is-interactive
   function ls --wraps ls -d "ls with preferred options"
     # command ls --group-directories-first --color=always -F1 "$argv"
     # command ls -a --color=always -F $argv
-    command exa -a  --icons --group-directories-first $argv
+    command eza -a  --icons --group-directories-first $argv
   end
 
   complete -e cd

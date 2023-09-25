@@ -5,7 +5,9 @@ with import <nixpkgs> {}; [
   zoxide # replaces cd 
   exa # replaces ls 
   silver-searcher # ag 
-  dust
+  ncdu # Better du -csh
+  walk
+  entr
   jq
   tree
   wget
