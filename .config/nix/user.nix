@@ -3,10 +3,10 @@ with import <nixpkgs> {}; [
   fish
   bash # Needed for tmux/extracto, also just nice to have newer version
   zoxide # replaces cd 
-  exa # replaces ls 
+  eza # replaces ls 
   silver-searcher # ag 
   ncdu # Better du -csh
-  walk
+  # walk
   entr
   jq
   tree
