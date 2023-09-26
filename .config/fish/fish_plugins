@@ -1,4 +1,2 @@
-PatrickF1/fzf.fish
-barnybug/docker-fish-completion
-patrickf1/colored_man_pages.fish
 lilyball/nix-env.fish
+jorgebucaran/fisher
