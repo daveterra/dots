@@ -1,6 +1,9 @@
-theme = "onelight"
+# theme = "onelight"
+
+theme = "catppuccin_frappe"
 
 [editor]
+true-color = true
 line-number = "relative"
 mouse = false
 bufferline = "always"
