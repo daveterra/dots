@@ -59,6 +59,10 @@ if status is-interactive
   set -gx YARN_RC_FILENAME "$XDG_CONFIG_HOME/yarn/yarnrc"
   set -gx WGETRC "$XDG_CONFIG_HOME/wget/wgetrc"
 
+  # For tmux history search
+  set -U FZF_CTRL_R_OPTS "--reverse"
+  set -U FZF_TMUX_OPTS "-p" 
+
   function pipupdate -d "Update out of date packages"
     pip list -o | awk 'NR > 2 {print $1}' | xargs pip install -U
   end
@@ -105,9 +109,10 @@ if status is-interactive
   function ls --wraps ls -d "ls with preferred options"
     # command ls --group-directories-first --color=always -F1 "$argv"
     # command ls -a --color=always -F $argv
-    command exa -a  --icons --group-directories-first $argv
+    command eza -a  --icons --group-directories-first $argv
   end
 
+  complete -e cd
   zoxide init --cmd cd fish | source
   # function cd -d "cd and then ls"
   #   builtin cd $argv && ls
@@ -182,6 +187,9 @@ if status is-interactive
   end
 
   starship init fish | source
+
+  __auto_source_venv
+
 end
 
 

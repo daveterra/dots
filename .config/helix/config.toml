@@ -5,6 +5,7 @@ line-number = "relative"
 mouse = false
 bufferline = "always"
 color-modes = true
+soft-wrap.enable = true
 
 [editor.cursor-shape]
 insert = "bar"
@@ -20,18 +21,22 @@ character = "┊"
 
 [editor.lsp]
 display-messages  = true
+display-inlay-hints = true
 
 [keys.normal]
-# 0 = "goto_line_start" # From vim. I don't have Home/End keys
-# "$" = "goto_line_end"
-# "#" = "shell_keep_pipe"
 g = { a = "code_action" } # Maps `ga` to show possible code actions
 A-s = ":w"
 A-w = ":bc"
+";" = "command_mode"
+"'" = "collapse_selection"
 
 [keys.insert]
 A-s = ":w"
 A-w = ":bc"
+
+[keys.select]
+"'" = "collapse_selection"
+";" = "no_op"
 
 # These just seemed backwards to me, I is LEFT of O (aka backwards)
 # but, alas, the remapping does not seem to work...
