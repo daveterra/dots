@@ -188,6 +188,11 @@ if status is-interactive
 
   starship init fish | source
 
+  # If this is an ssh client, cd to terracloud...
+  if set -q SSH_CLIENT ;
+    cd ~/code/terracloud
+  end
+
   __auto_source_venv
 
 end
