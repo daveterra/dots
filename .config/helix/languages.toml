@@ -20,3 +20,6 @@ name = "typescript"
 auto-format = true
 
 
+[[language]]
+name = "markdown"
+auto-format = true
