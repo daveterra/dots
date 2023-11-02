@@ -8,7 +8,8 @@ auto-format = true
 
 [[language]]
 name = "rust"
-rulers = [128]
+rulers = [99]
+text-width = 99
 
 [[language]]
 name = "javascript"
@@ -20,3 +21,6 @@ name = "typescript"
 auto-format = true
 
 
+[[language]]
+name = "markdown"
+auto-format = true
