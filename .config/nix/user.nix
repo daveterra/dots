@@ -6,8 +6,9 @@ with import <nixpkgs> {}; [
   eza # replaces ls 
   silver-searcher # ag 
   ncdu # Better du -csh
-  # walk
-  entr
+  walk # Util for browsing folders
+  entr # Do something when files change
+  restic # Backup util
   jq
   tree
   wget
@@ -49,7 +50,6 @@ with import <nixpkgs> {}; [
 
   # Helix and LSPs
   python310Packages.python-lsp-server
-  # vscode-langservers-extracted
   nodePackages_latest.vscode-langservers-extracted
   nodePackages_latest.bash-language-server
   marksman

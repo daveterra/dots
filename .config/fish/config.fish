@@ -11,10 +11,6 @@ set -gx LANGUAGE en_US.UTF-8
 set -gx LOCALE_ARCHIVE /usr/lib/locale/locale-archive
 set -gx SHELL (which fish)
 
-# Add to path
-# fish_add_path "$HOME/.cargo/bin"
-# fish_add_path  /nix/var/nix/profiles/default/bin
-
 # Safer (but more annoying?) rm
 function recycling -d "My rm replacement"
   mkdir -p ~/.trash 1>&2 2> /dev/null
@@ -32,10 +28,10 @@ function setDarkMode --argument darkmode
     alias kitty /Applications/kitty.app/Contents/MacOS/kitty
     if $darkmode
       echo "Darkmode is on: $file" > /tmp/hello.txt
-      kitty @ --to "unix:$file" set-colors -a -c ~/.config/kitty/ohdark.conf > /tmp/out.txt 2> /tmp/out.txt
+      kitty @ --to "unix:$file" set-colors -a -c ~/.config/kitty/colors/dark.conf > /tmp/out.txt 2> /tmp/out.txt
     else
       echo "Darkmode is off: $file" > /tmp/hello.txt
-      kitty @ --to "unix:$file" set-colors -a -c ~/.config/kitty/ohlight.conf > /tmp/out.txt 2> /tmp/out.txt
+      kitty @ --to "unix:$file" set-colors -a -c ~/.config/kitty/colors/light.conf > /tmp/out.txt 2> /tmp/out.txt
     end
   end
 end
@@ -71,6 +67,10 @@ if status is-interactive
     nix-shell --command "fish"
   end
 
+  function lk
+    set loc (walk --icons $argv); and cd $loc;
+  end
+
   # bind \t complete
   # bind \t forward-word
   # bind \t complete-no-pager
@@ -78,8 +78,8 @@ if status is-interactive
   # bind \t forward-word complete
 
   # Changes:
-  # * Instead of overriding cd, we detect directory change. This allows the script to work
-  #   for other means of cd, such as z.
+  # * Instead of overriding cd, we detect directory change. 
+  #   This allows the script to work for other means of cd, such as z.
   # * Update syntax to work with new versions of fish.
   # * Handle virtualenvs that are not located in the root of a git directory.
   function __auto_source_venv --on-variable PWD --description "Activate/Deactivate virtualenv on directory change"
@@ -108,15 +108,8 @@ if status is-interactive
 
   function ls --wraps ls -d "ls with preferred options"
     # command ls --group-directories-first --color=always -F1 "$argv"
-    # command ls -a --color=always -F $argv
     command eza -a  --icons --group-directories-first $argv
   end
-
-  complete -e cd
-  zoxide init --cmd cd fish | source
-  # function cd -d "cd and then ls"
-  #   builtin cd $argv && ls
-  # end
 
   function please -d "Run the last command as sudo"
       eval command sudo $history[1]
@@ -152,7 +145,6 @@ if status is-interactive
   alias glados "ssh dave@10.173.0.5"
   alias work "ssh dave@10.173.0.11"
   alias skynet "ssh pi@10.243.24.42"
-  alias nas "ssh Dave@10.173.0.3"
   alias cloud "ssh dave@terracloud.us"
   alias router "ssh admin@10.173.0.1"
   alias myip "curl ipinfo.io/ip"
@@ -167,6 +159,9 @@ if status is-interactive
   set -g fish_cursor_default underscore
   set -g fish_cursor_insert line
   set -g fish_cursor_visual block
+
+  # complete -e cd
+  zoxide init --cmd cd fish | source
 
   function fish_command_not_found
     if test "$argv[1]" = "fisher"
