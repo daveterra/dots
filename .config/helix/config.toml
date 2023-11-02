@@ -14,11 +14,7 @@ wrap-at-text-width = true
 
 [editor.cursor-shape]
 insert = "bar"
-
-# [editor.statusline]
-# left = ["mode", "spinner", "version-control"]
-# center = ["filename", "file-modification-indicator"]
-# right = ["diagnostics", "selections", "position", "file-encoding"]
+# insert = "bar"
 
 [editor.indent-guides]
 render = true
