@@ -9,7 +9,7 @@ with import <nixpkgs> {}; [
   walk # Util for browsing folders
   entr # Do something when files change
   restic # Backup util
-  jq
+  jq # Json tool
   tree
   wget
   pv
@@ -29,7 +29,7 @@ with import <nixpkgs> {}; [
   nmap
   python310
   inetutils
-  # ddgr # duck duck go from
+  # ddgr # duck duck go from terminal
   # mosh # an ssh wrapper
   
   # Fun-like utils
