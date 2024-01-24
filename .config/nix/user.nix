@@ -29,6 +29,9 @@ with import <nixpkgs> {}; [
   nmap
   python310
   inetutils
+  direnv
+  git-crypt
+  walk
   # ddgr # duck duck go from terminal
   # mosh # an ssh wrapper
   

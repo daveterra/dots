@@ -1,4 +1,5 @@
-# theme = "onelight"
+# Something to consider: 
+# https://github.com/LGUG2Z/helix-vim/blob/master/config.toml # theme = "onelight"
 theme = "catppuccin_frappe"
 
 [editor]
@@ -24,12 +25,21 @@ character = "┊"
 display-messages  = true
 display-inlay-hints = true
 
+[editor.file-picker]
+hidden = false
+
 [keys.normal]
 g = { a = "code_action" } # Maps `ga` to show possible code actions
 A-s = ":w"
 A-w = ":bc"
 ";" = "command_mode"
 "'" = "collapse_selection"
+
+# # Some nice Helix stuff
+# s-h = "select_prev_sibling"
+# s-j = "shrink_selection"
+# s-k = "expand_selection"
+# s-l = "select_next_sibling"
 
 [keys.insert]
 A-s = ":w"

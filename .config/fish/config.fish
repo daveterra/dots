@@ -10,6 +10,7 @@ set -gx LANG en_US.UTF-8
 set -gx LANGUAGE en_US.UTF-8
 set -gx LOCALE_ARCHIVE /usr/lib/locale/locale-archive
 set -gx SHELL (which fish)
+# set -gx CONFIG_SHELL (which fish)
 
 # Safer (but more annoying?) rm
 function recycling -d "My rm replacement"
@@ -106,6 +107,12 @@ if status is-interactive
     end
   end
 
+  function auto_shell_hook --on-variable shellHook
+    if test -n "$shellHook" #only if set
+      eval $shellHook
+    end
+  end
+
   function ls --wraps ls -d "ls with preferred options"
     # command ls --group-directories-first --color=always -F1 "$argv"
     command eza -a  --icons --group-directories-first $argv
@@ -182,6 +189,7 @@ if status is-interactive
   end
 
   starship init fish | source
+  direnv hook fish | source
 
   # If this is an ssh client, cd to terracloud...
   if set -q SSH_CLIENT ;
