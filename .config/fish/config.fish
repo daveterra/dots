@@ -36,12 +36,9 @@ function setDarkMode --argument darkmode
   end
 end
 
-source ~/.config/fish/my_functions/*.fish
-
 # Set up for SD
 set -gx SD_ROOT "$HOME/code/sd_scripts/"
 fish_add_path "$HOME/code/sd"
-
 set -gx EDITOR hx
 
 if status is-interactive
@@ -130,12 +127,12 @@ if status is-interactive
   function cheat.sh
       curl cheat.sh/$argv
   end
-
   alias cheat cheat.sh
 
   # Alias
-  alias vi hx # nvim
-  alias vim hx # nvim
+  alias top btop
+  alias vi hx 
+  alias vim hx 
   alias ll "ls -alh"
   alias gap "git add --patch -i"
   # alias btc "ssh cointop.sh"
@@ -189,7 +186,6 @@ if status is-interactive
   end
 
   __auto_source_venv
-
 end
 
 

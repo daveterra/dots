@@ -10,6 +10,7 @@ with import <nixpkgs> {}; [
   entr # Do something when files change
   restic # Backup util
   jq # Json tool
+  btop # Fancier top with disk and net usage
   tree
   wget
   pv
@@ -29,6 +30,8 @@ with import <nixpkgs> {}; [
   nmap
   python310
   inetutils
+  flavours
+  base16-builder
   # ddgr # duck duck go from terminal
   # mosh # an ssh wrapper
   
