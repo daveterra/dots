@@ -1,14 +1,24 @@
 add_newline = true
 
+# format = """
+# [╭─$fill(─≺ $status$sudo$cmd_duration$battery≻─────)](bold foreground)
+# [│](bold foreground) ${custom.macos}${custom.linux}\
+# $nix_shell\
+# $username$hostname\
+# $directory\
+# $python$swift\
+# ($git_branch$git_state$git_status)
+# [╰──](bold foreground)$character
+# """
+
 format = """
-[╭─$fill(─≺ $status$sudo$cmd_duration$battery≻─────)](bold foreground)
-[│](bold foreground) ${custom.macos}${custom.linux}\
+${custom.macos}${custom.linux}\
 $nix_shell\
 $username$hostname\
 $directory\
 $python$swift\
-($git_branch$git_state$git_status)
-[╰──](bold foreground)$character
+($git_branch$git_status)\
+(bold foreground)$character
 """
 
 scan_timeout = 15
@@ -26,7 +36,7 @@ style_user = "bold bright-blue "
 style_root = "bold bright-red"
 format = "[$user]($style)@"
 disabled = false
-show_always = true
+show_always = false
 
 [sudo]
 format="[$symbol ]($style)"
@@ -40,15 +50,16 @@ format="[ $duration]($style) "
 
 [git_branch]
 symbol = ""
-# symbol=""
 style = "purple"
-format = "[$symbol $branch]($style)"
+ignore_branches = ["main"]
+format = "[$symbol $branch]($style) "
 
 [git_status]
-format = ' ([\[$conflicted$deleted$renamed$modified$staged$untracked$ahead_behind\]]($style))'
+style = "purple"
+format = '([\[$conflicted$deleted$renamed$modified$staged$untracked$ahead_behind\]]($style))'
 
 [hostname]
-ssh_only = false
+ssh_only = true
 format = "[$hostname]($style) "
 style = "fg:yellow"
 
@@ -78,7 +89,7 @@ style = "bold cyan"
 truncate_to_repo = true
 truncation_length = 7
 fish_style_pwd_dir_length = 1
-format = "[in ](foreground)[$path]($style)[$read_only]($read_only_style) "
+format = "[](foreground)[$path]($style)[$read_only]($read_only_style) "
 truncation_symbol = "..."
 
 [fill]
@@ -105,6 +116,6 @@ style = "yellow"
 
 [nix_shell]
 disabled = false
-impure_msg = '[$name](bold red)'
-pure_msg = '[$name](bold blue)'
-format = '[<\($state\)>](bold blue) '
+impure_msg = '[󱄅](bold red)'
+pure_msg = '[󱄅](bold blue)'
+format = '[$state](bold blue) '

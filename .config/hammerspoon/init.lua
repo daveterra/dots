@@ -9,6 +9,20 @@ hs.hotkey.bind({"cmd", "alt", "ctrl"}, "Return", function()
   hs.grid.toggleShow()
 end)
 
+hs.dockicon.show()
+
+function spotlite(data) 
+    hs.alert.show("Hey")
+end
+
+hs.hotkey.bind({"cmd", "alt"}, "space", function() 
+ 	local c = hs.chooser.new(spotlite)
+  c:queryChangedCallback(function(text) 
+    print(text)
+  end)
+  c:show()
+end)
+
 hs.hotkey.bind({"cmd", "alt", "ctrl"}, "k", function()
   local win = hs.window.focusedWindow()
   hs.grid.set(win, hs.geometry.rect(0,0,6,3))

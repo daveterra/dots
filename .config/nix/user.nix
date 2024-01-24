@@ -32,6 +32,9 @@ with import <nixpkgs> {}; [
   inetutils
   flavours
   base16-builder
+  direnv
+  git-crypt
+  walk
   # ddgr # duck duck go from terminal
   # mosh # an ssh wrapper
   
