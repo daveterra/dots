@@ -44,7 +44,7 @@ with import <nixpkgs> {}; [
   lolcat
   cowsay
   figlet
-  boxes
+  # boxes
   asciiquarium
   cbonsai
   # graph-easy
