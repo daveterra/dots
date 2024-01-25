@@ -35,6 +35,7 @@ with import <nixpkgs> {}; [
   direnv
   git-crypt
   walk
+  direnv
   # ddgr # duck duck go from terminal
   # mosh # an ssh wrapper
   

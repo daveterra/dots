@@ -34,12 +34,9 @@ A-s = ":w"
 A-w = ":bc"
 ";" = "command_mode"
 "'" = "collapse_selection"
-
-# # Some nice Helix stuff
-# s-h = "select_prev_sibling"
-# s-j = "shrink_selection"
-# s-k = "expand_selection"
-# s-l = "select_next_sibling"
+y = ["yank_main_selection_to_clipboard", "normal_mode", "flip_selections", "collapse_selection"]
+p = ["paste_clipboard_after", "collapse_selection"]
+P = ["paste_clipboard_before", "collapse_selection"]
 
 [keys.insert]
 A-s = ":w"
@@ -48,6 +45,9 @@ A-w = ":bc"
 [keys.select]
 "'" = "collapse_selection"
 ";" = "no_op"
+y = ["yank_main_selection_to_clipboard", "normal_mode", "flip_selections", "collapse_selection"]
+p = "replace_selections_with_clipboard" 
+P = "paste_clipboard_before"
 
 # These just seemed backwards to me, I is LEFT of O (aka backwards)
 # but, alas, the remapping does not seem to work...
