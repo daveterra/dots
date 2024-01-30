@@ -34,6 +34,7 @@ A-s = ":w"
 A-w = ":bc"
 ";" = "command_mode"
 "'" = "collapse_selection"
+d = ["yank_main_selection_to_clipboard","delete_selection"]
 y = ["yank_main_selection_to_clipboard", "normal_mode", "flip_selections", "collapse_selection"]
 p = ["paste_clipboard_after", "collapse_selection"]
 P = ["paste_clipboard_before", "collapse_selection"]
@@ -45,6 +46,7 @@ A-w = ":bc"
 [keys.select]
 "'" = "collapse_selection"
 ";" = "no_op"
+d = ["yank_main_selection_to_clipboard","delete_selection"]
 y = ["yank_main_selection_to_clipboard", "normal_mode", "flip_selections", "collapse_selection"]
 p = "replace_selections_with_clipboard" 
 P = "paste_clipboard_before"

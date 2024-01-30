@@ -20,6 +20,8 @@ with import <nixpkgs> {}; [
   git
   ripgrep
   aspell
+  ltex-ls
+  aspellDicts.en
   lazygit
   bitwarden-cli
   docker-compose
