@@ -2,7 +2,7 @@ require "darkmenu"
 
 local grid = hs.geometry.size(6, 6)
 hs.grid.setGrid(grid)
-hs.grid.setMargins(hs.geometry.size(5,5))
+hs.grid.setMargins(hs.geometry.size(8,8))
 -- hs.screen.mainScreen():setOrigin(0,40)
 
 hs.hotkey.bind({"cmd", "alt", "ctrl"}, "Return", function()
