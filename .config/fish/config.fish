@@ -104,9 +104,9 @@ if status is-interactive
     end
   end
 
-  function auto_shell_hook --on-variable shellHook
-    if test -n "$shellHook" #only if set
-      eval $shellHook
+  function auto_shell_hook --on-variable fishShellHook
+    if test -n "$fishShellHook" #only if set
+      eval $fishShellHook
     end
   end
 
@@ -186,6 +186,9 @@ if status is-interactive
   end
 
   starship init fish | source
+  set -g direnv_fish_mode disable_arrow
+  export DIRENV_LOG_FORMAT=""
+  export export DIRENV_WARN_TIMEOUT=1m
   direnv hook fish | source
 
   # If this is an ssh client, cd to terracloud...

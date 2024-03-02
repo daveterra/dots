@@ -23,12 +23,13 @@ character = "┊"
 
 [editor.lsp]
 display-messages  = true
-display-inlay-hints = true
+display-inlay-hints = false
 
 [editor.file-picker]
 hidden = false
 
 [keys.normal]
+C-g = ":sh tmux popup -d \"#{pane_current_path}\" -xC -yC -w80% -h80% -E lazygit"
 g = { a = "code_action" } # Maps `ga` to show possible code actions
 A-s = ":w"
 A-w = ":bc"
@@ -50,6 +51,7 @@ d = ["yank_main_selection_to_clipboard","delete_selection"]
 y = ["yank_main_selection_to_clipboard", "normal_mode", "flip_selections", "collapse_selection"]
 p = "replace_selections_with_clipboard" 
 P = "paste_clipboard_before"
+
 
 # These just seemed backwards to me, I is LEFT of O (aka backwards)
 # but, alas, the remapping does not seem to work...
