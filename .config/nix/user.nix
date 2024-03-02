@@ -38,6 +38,7 @@ with import <nixpkgs> {}; [
   git-crypt
   walk
   direnv
+
   # ddgr # duck duck go from terminal
   # mosh # an ssh wrapper
   
@@ -61,6 +62,9 @@ with import <nixpkgs> {}; [
   python310Packages.python-lsp-server
   nodePackages_latest.vscode-langservers-extracted
   nodePackages_latest.bash-language-server
+  swift-format
+  typos
+  rnix-lsp
   marksman
   helix
 

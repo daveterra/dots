@@ -1,3 +1,19 @@
+[language-server.ltex]
+command = "ltex-ls"
+
+[language-server.nix]
+command = "rnix-lsp"
+
+[language-server.typos]
+command = "typos-lsp"
+
+[language-server.ltex.config.ltex.dictionary]
+"en-US" = ["Tp-Note", "Zettelkasten", "actigraph", "iCalendar", "actigraphy", "ActigPatch", "Vikand", "Wireguard"]
+
+[language-server.clangd]
+command = 'clangd'
+args = ['--function-arg-placeholders', '--completion-style=detailed', '--clang-tidy', '--log=verbose']
+
 [[language]]
 name = "python"
 # language-server = { command = "ruff-lsp" }
@@ -28,9 +44,16 @@ language-servers = [{ name = "ltex"}]
 file-types = ["md", "txt"]
 scope = "text.markdown"
 
-[language-server.ltex]
-command = "ltex-ls"
+[[language]]
+name = 'c'
+auto-format = true
+language-servers = ['clangd']
 
-[language-server.ltex.config.ltex.dictionary]
-"en-US" = ["Tp-Note", "Zettelkasten", "actigraph", "iCalendar", "actigraphy"]
+[[language]]
+name = 'nix'
+language-servers = ['nix', 'typos']
 
+[[language]]
+name = "swift"
+formatter = { command = "swift-format", args = ["format", "--configuration", ".swift-format"] }
+auto-format = true
