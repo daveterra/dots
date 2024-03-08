@@ -7,7 +7,13 @@
 	co = checkout
 	ci = commit
 	st = status
+	sh = show
 	br = branch
+	f = fetch
+	fa = fetch --all
+	r = reset
+	df = diff
+	l = log
 	gap = add --patch -i
 	hist = log --pretty=format:'%h %ad | %s%d [%an]' --graph --date=short
 	type = cat-file -t
@@ -17,9 +23,23 @@
 	check = ls-files --exclude-standard --others
 [init]
 	defaultBranch = main
-[url "ssh://git@github.com/"]
-	insteadOf = https://github.com/
 [status]
 	showStash = true
 [commit]
+	verbose = true
     whitespace = fix
+	gpgSign = false
+[url "ssh://git@github.com/"]
+	insteadOf = https://github.com/
+[gpg]
+	format = ssh
+[tag]
+	gpgSign = false
+[log]
+	date = local
+[tag]
+	sort = version:refname
+[rerere]
+	enable = true
+[include]
+	path = config.local
