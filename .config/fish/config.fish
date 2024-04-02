@@ -52,6 +52,7 @@ if status is-interactive
   set -gx _ZO_DATA_DIR "$XDG_DATA_HOME/z/"
   set -gx YARN_RC_FILENAME "$XDG_CONFIG_HOME/yarn/yarnrc"
   set -gx WGETRC "$XDG_CONFIG_HOME/wget/wgetrc"
+  set -gx APP_DATA_DIR "$HOME/Library/ApplicationSupport/"
 
   # For tmux history search
   set -U FZF_CTRL_R_OPTS "--reverse"
