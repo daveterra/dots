@@ -57,6 +57,8 @@ if status is-interactive
   set -U FZF_CTRL_R_OPTS "--reverse"
   set -U FZF_TMUX_OPTS "-p" 
 
+  fish_config theme choose cfrappe
+
   function pipupdate -d "Update out of date packages"
     pip list -o | awk 'NR > 2 {print $1}' | xargs pip install -U
   end
@@ -139,6 +141,7 @@ if status is-interactive
   # Alias
   alias top btop
   alias vi hx 
+  alias lzy lazygit
   alias vim hx 
   alias ll "ls -alh"
   alias gap "git add --patch -i"
