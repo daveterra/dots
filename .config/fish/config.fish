@@ -55,8 +55,18 @@ if status is-interactive
   set -gx APP_DATA_DIR "$HOME/Library/ApplicationSupport/"
 
   # For tmux history search
-  set -U FZF_CTRL_R_OPTS "--reverse"
-  set -U FZF_TMUX_OPTS "-p" 
+  set -U FZF_CTRL_R_OPTS "
+  --preview 'echo {}' --preview-window down:25%:wrap
+  --bind 'ctrl-/:toggle-preview'
+  --bind 'ctrl-y:execute-silent(echo -n {2..} | pbcopy)+abort'
+  --color header:italic
+  --header='CTRL-Y to copy command into clipboard, CTRL-/ to toggle preview'
+  --reverse"
+
+  set -U FZF_CTRL_T_OPTS "
+    --preview 'bat -n --color=always {}' --bind 'ctrl-/:change-preview-window(down|hidden|)'
+  "
+  set -U FZF_TMUX_OPTS "-p80%,60%"
 
   function pipupdate -d "Update out of date packages"
     pip list -o | awk 'NR > 2 {print $1}' | xargs pip install -U
@@ -136,6 +146,8 @@ if status is-interactive
       curl cheat.sh/$argv
   end
   alias cheat cheat.sh
+  alias nls "sd notes ls"
+  alias ncd "cd ~/Notes"
 
   # Alias
   alias top btop
