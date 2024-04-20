@@ -1,5 +1,6 @@
 [language-server.ltex]
 command = "ltex-ls"
+# args=["--log-file=/Users/dave/.cache/helix/ltex.log"]
 
 [language-server.nix]
 command = "rnix-lsp"
@@ -7,8 +8,10 @@ command = "rnix-lsp"
 [language-server.typos]
 command = "typos-lsp"
 
+# [language-server.ltex.config.ltex.dictionary]
+# "en-US" = ["Tp-Note", "Zettelkasten", "actigraph", "iCalendar", "actigraphy", "ActigPatch", "Vikand", "Wireguard", "ZTU", "Flarg"]
 [language-server.ltex.config.ltex.dictionary]
-"en-US" = ["Tp-Note", "Zettelkasten", "actigraph", "iCalendar", "actigraphy", "ActigPatch", "Vikand", "Wireguard"]
+"en-US" = [":~/.config/helix/ltex.dictionary.en-US.txt", "ZTU"]
 
 [language-server.clangd]
 command = 'clangd'
@@ -55,5 +58,7 @@ language-servers = ['nix', 'typos']
 
 [[language]]
 name = "swift"
+rulers = [101]
+text-width = 100
 formatter = { command = "swift-format", args = ["format", "--configuration", ".swift-format"] }
 auto-format = true
