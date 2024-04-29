@@ -23,6 +23,18 @@ hs.hotkey.bind({"cmd", "alt"}, "space", function()
   c:show()
 end)
 
+hs.hotkey.bind({"cmd", "shift"}, "1", function() 
+  hs.application.launchOrFocus("Kitty")
+end)
+
+hs.hotkey.bind({"cmd", "shift"}, "2", function() 
+  hs.application.launchOrFocus("Firefox")
+end)
+
+hs.hotkey.bind({"cmd", "shift"}, "3", function() 
+  hs.application.launchOrFocus("Mail")
+end)
+
 hs.hotkey.bind({"cmd", "alt", "ctrl"}, "k", function()
   local win = hs.window.focusedWindow()
   hs.grid.set(win, hs.geometry.rect(0,0,6,3))
