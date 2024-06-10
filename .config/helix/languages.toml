@@ -1,6 +1,5 @@
 [language-server.ltex]
 command = "ltex-ls"
-# args=["--log-file=/Users/dave/.cache/helix/ltex.log"]
 
 [language-server.nix]
 command = "rnix-lsp"
@@ -8,10 +7,12 @@ command = "rnix-lsp"
 [language-server.typos]
 command = "typos-lsp"
 
-# [language-server.ltex.config.ltex.dictionary]
-# "en-US" = ["Tp-Note", "Zettelkasten", "actigraph", "iCalendar", "actigraphy", "ActigPatch", "Vikand", "Wireguard", "ZTU", "Flarg"]
+[language-server.sourcekit-lsp]
+command = "sourcekit-lsp"
+# args =  ["--log-level", "debug"]
+
 [language-server.ltex.config.ltex.dictionary]
-"en-US" = [":~/.config/helix/ltex.dictionary.en-US.txt", "ZTU"]
+"en-US" = ["Tp-Note", "Zettelkasten", "actigraph", "iCalendar", "actigraphy", "ActigPatch", "Vikand", "Wireguard", "ZTU", "Flarg", "MTEC"]
 
 [language-server.clangd]
 command = 'clangd'
@@ -42,10 +43,12 @@ auto-format = true
 
 [[language]]
 name = "markdown"
+rulers = [99]
 auto-format = true
 language-servers = [{ name = "ltex"}]
 file-types = ["md", "txt"]
 scope = "text.markdown"
+formatter = { command = "dprint", args = ["fmt", "--stdin", "md"]}
 
 [[language]]
 name = 'c'
@@ -64,3 +67,4 @@ rulers = [101]
 text-width = 100
 formatter = { command = "swift-format", args = ["format", "--configuration", ".swift-format"] }
 auto-format = true
+language-servers = ['sourcekit-lsp', 'typos']
