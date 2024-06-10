@@ -55,6 +55,8 @@ language-servers = ['clangd']
 [[language]]
 name = 'nix'
 language-servers = ['nix', 'typos']
+formatter = { command = "alejandra" }
+auto-format = true
 
 [[language]]
 name = "swift"
