@@ -1,5 +1,5 @@
 with import <nixpkgs> {}; [
-  # Command line tools 
+  # Command line tools
   aspell
   aspellDicts.en
   base16-builder
@@ -11,11 +11,12 @@ with import <nixpkgs> {}; [
   direnv
   docker-compose
   entr # Do something when files change
-  eza # replaces ls 
+  eza # replaces ls
   fish
   flavours
   frogmouth # Markdown reader
   fswatch
+  dprint # Formatter for markdown, etc.
   fzf
   git
   git-crypt
@@ -31,18 +32,18 @@ with import <nixpkgs> {}; [
   restic # Backup util
   ripgrep
   rsync
-  silver-searcher # ag 
+  silver-searcher # ag
   starship
   tmux
   tmuxinator
   tree
   walk # Util for browsing folders
   wget
-  zoxide # replaces cd 
+  zoxide # replaces cd
 
   # ddgr # duck duck go from terminal
   # mosh # an ssh wrapper
-  
+
   # Fun-like utils
   neofetch
   lolcat
@@ -66,6 +67,7 @@ with import <nixpkgs> {}; [
   nodePackages_latest.vscode-langservers-extracted
   python310Packages.python-lsp-server
   rnix-lsp
+  rustfmt
   swift-format
   typos
 
