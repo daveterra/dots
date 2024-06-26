@@ -206,6 +206,7 @@ if status is-interactive
   export DIRENV_LOG_FORMAT=""
   export export DIRENV_WARN_TIMEOUT=1m
   direnv hook fish | source
+  atuin init fish | source
 
   # If this is an ssh client, cd to terracloud...
   if set -q SSH_CLIENT ;
