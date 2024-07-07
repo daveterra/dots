@@ -5,6 +5,10 @@
 # Reference is: https://fishshell.com/docs/current/language.html
 #
 
+
+# Nix darwin
+fish_add_path "/run/current-system/sw/bin"
+
 set -gx LC_ALL en_US.UTF-8
 set -gx LANG en_US.UTF-8
 set -gx LANGUAGE en_US.UTF-8
@@ -41,6 +45,10 @@ end
 set -gx SD_ROOT "$HOME/code/sd_scripts/"
 fish_add_path "$HOME/code/sd"
 set -gx EDITOR hx
+
+# Settings for taskwarrior
+set -gx TASKRC "$HOME/.config/taskwarrior/config" 
+set -gx TASKDATA "$HOME/.local/share/taskwarrior/"
 
 if status is-interactive
   set -gx DEFAULT_USER dave
