@@ -23,6 +23,10 @@ include ~/.config/taskwarrior/theme/dave.theme
 
 context.personal.read=project.not:work project:life or +life or project:personal or +personal
 
+context=nix
+context.nix.read=project:computer.nix +nix
+context.nix.write=project:computer.nix +nix
+
 uda.taskwarrior-tui.keyconfig.quit=q
 uda.taskwarrior-tui.keyconfig.refresh=r
 uda.taskwarrior-tui.keyconfig.go-to-bottom=G
@@ -36,7 +40,7 @@ uda.taskwarrior-tui.keyconfig.done=d
 uda.taskwarrior-tui.keyconfig.start-stop=s
 uda.taskwarrior-tui.keyconfig.quick-tag=t
 uda.taskwarrior-tui.keyconfig.undo=u
-uda.taskwarrior-tui.keyconfig.edit=e
+# uda.taskwarrior-tui.keyconfig.edit=e
 uda.taskwarrior-tui.keyconfig.modify=m
 uda.taskwarrior-tui.keyconfig.shell=!
 uda.taskwarrior-tui.keyconfig.log=l
@@ -72,14 +76,12 @@ uda.taskwarrior-tui.scrollbar.indicator=█
 uda.taskwarrior-tui.style.report.scrollbar.area=white
 uda.taskwarrior-tui.scrollbar.area=║
 # uda.taskwarrior-tui.task-report.next.filter=$(task show report.next.filter)
-uda.taskwarrior-tui.task-report.next.filter=
+uda.taskwarrior-tui.task-report.next.filter=status:pending
 uda.taskwarrior-tui.task-report.auto-insert-double-quotes-on-add=true
 uda.taskwarrior-tui.task-report.auto-insert-double-quotes-on-annotate=true
 uda.taskwarrior-tui.task-report.auto-insert-double-quotes-on-log=true
 uda.taskwarrior-tui.task-report.reset-filter-on-esc=true
 uda.taskwarrior-tui.context-menu.select-on-move=false
 uda.taskwarrior-tui.tabs.change-focus-rotate=false
+uda.taskwarrior-tui.tick-rate=1500
 
-context=nix
-context.nix.read=project:computer.nix +nix
-context.nix.write=project:computer.nix +nix
