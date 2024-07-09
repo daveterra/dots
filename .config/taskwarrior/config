@@ -23,7 +23,6 @@ include ~/.config/taskwarrior/theme/dave.theme
 
 context.personal.read=project.not:work project:life or +life or project:personal or +personal
 
-context=nix
 context.nix.read=project:computer.nix +nix
 context.nix.write=project:computer.nix +nix
 
