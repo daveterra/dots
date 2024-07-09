@@ -1,6 +1,9 @@
 # Something to consider: 
-# https://github.com/LGUG2Z/helix-vim/blob/master/config.toml # theme = "onelight"
-theme = "catppuccin_frappe"
+# https://github.com/LGUG2Z/helix-vim/blob/master/config.toml 
+# theme = "onedark"
+# theme = "catppuccin_frappe"
+# theme = "rose_pine"
+theme = "adwaita-dark"
 
 [editor]
 true-color = true
