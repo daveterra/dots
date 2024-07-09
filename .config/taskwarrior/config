@@ -1,4 +1,6 @@
 # [Created by task 3.0.0 7/7/2024 09:50:38]
+# DAVE: try `task _config` to show all options
+# DAVE: try `task show` to show all configured options
 # Taskwarrior program configuration file.
 # For more documentation, see https://taskwarrior.org or try 'man task', 'man task-color',
 # 'man task-sync' or 'man taskrc'
@@ -7,6 +9,10 @@
 #   variable=foo   -- By specifying a value, this overrides the default
 #   variable=      -- By specifying no value, this means no default
 #   #variable=foo  -- By commenting out the line, or deleting it, this uses the default
+
+report.next.columns=id,urgency,description,project,tags,due
+report.next.labels=ID,Urg,Description,Project,Tags,Due
+column.padding=4
 
 # You can also refence environment variables:
 #   variable=$HOME/task
@@ -23,9 +29,14 @@ include ~/.config/taskwarrior/theme/dave.theme
 
 context.personal.read=project.not:work project:life or +life or project:personal or +personal
 
-context=nix
 context.nix.read=project:computer.nix +nix
 context.nix.write=project:computer.nix +nix
+
+context.cps-apple.read=project:work.cps.cps-apple +cps +mtec
+context.cps-apple.write=project:work.cps.cps-apple +cps +mtec
+
+context.cps.read=project:work.cps +cps
+context.cps.write=project:work.cps +cps
 
 uda.taskwarrior-tui.keyconfig.quit=q
 uda.taskwarrior-tui.keyconfig.refresh=r
@@ -85,3 +96,4 @@ uda.taskwarrior-tui.context-menu.select-on-move=false
 uda.taskwarrior-tui.tabs.change-focus-rotate=false
 uda.taskwarrior-tui.tick-rate=1500
 
+context=cps-apple

@@ -47,7 +47,7 @@ color.blocked=black on white
 color.blocking=black on bright white
 
 # Project
-color.project.none=
+color.project.none=gray
 
 # Priority
 color.uda.priority.H=bold white
