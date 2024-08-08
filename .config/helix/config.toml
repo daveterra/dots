@@ -35,7 +35,7 @@ hidden = false
 C-g = ":sh tmux popup -d \"#{pane_current_path}\" -xC -yC -w80% -h80% -E lazygit"
 C-p = ":sh sd notes preview"
 g = { a = "code_action" } # Maps `ga` to show possible code actions
-A-s = ":w"
+# A-s = ":w"
 A-w = ":bc"
 ";" = "command_mode"
 "'" = "collapse_selection"
