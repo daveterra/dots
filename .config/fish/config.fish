@@ -144,7 +144,7 @@ if status is-interactive
         set REPLY ""
         echo
         while test $REPLY != y
-            set msg (curl -s http://whatthecommit.com/index.txt)
+            set msg (curl -sL http://whatthecommit.com/index.txt)
             set REPLY (read -P "$msg" -n 1)
             echo
         end
