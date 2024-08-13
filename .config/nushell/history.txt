@@ -1,0 +1,37 @@
+exit 
+open temps.csv
+hx temps.csv
+clear 
+./temps.sh
+head temps.csv
+cat temps.csv | grep -v Temp | less
+exit
+open temps.csv | math 
+open temps.csv | rename 1 external 
+open temps.csv | rename external internal 
+clear 
+reset 
+clear 
+open temps.csv | rename external internal 
+open temps.csv
+open a.csv
+head temps.csv | csv --noheader |  header 
+head temps.csv | from csv --noheader |  header 
+head temps.csv | from csv -n |  header 
+head temps.csv | from csv -n |  headers
+head temps.csv | from csv -n 
+head temps.csv | from csv -n | rename external internal 
+echo 0xC061 | fish math 
+echo 0xC061 | fish -c math 
+fish --help 
+echo 0xC061 | fish -c math 
+echo 0xC061 | fish -c 'math'
+echo 0xC061 | fish -c 'math $1'
+fish -c 'math 0xC061' 
+fish -c 'math 0xC061*175.72' 
+fish -c 'math 0xC061 * 175.72' 
+head temps.csv | from csv -n | rename external internal | decode hex 
+head temps.csv | from csv -n | rename external internal
+head temps.csv | decode hex | from csv -n | rename external internal 
+echo | decode hex 
+exit
