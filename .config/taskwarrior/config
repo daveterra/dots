@@ -28,7 +28,6 @@ include ~/.config/taskwarrior/theme/dave.theme
 # include dark-16.theme
 
 context.personal.read=project.not:work project:life or +life or project:personal or +personal
-
 context.nix.read=project:computer.nix +nix
 context.nix.write=project:computer.nix +nix
 
@@ -37,6 +36,9 @@ context.cps-apple.write=project:work.cps.cps-apple +cps +mtec
 
 context.cps.read=project:work.cps +cps
 context.cps.write=project:work.cps +cps
+
+context.cps-nix.read=project:work.cps.nix +nix
+context.cps-nix.write=project:work.cps.nix +cps +nix
 
 uda.taskwarrior-tui.keyconfig.quit=q
 uda.taskwarrior-tui.keyconfig.refresh=r
@@ -62,7 +64,7 @@ uda.taskwarrior-tui.keyconfig.zoom=z
 uda.taskwarrior-tui.keyconfig.context-menu=c
 uda.taskwarrior-tui.keyconfig.next-tab=]
 uda.taskwarrior-tui.keyconfig.previous-tab=[
-da.taskwarrior-tui.selection.indicator=•
+uda.taskwarrior-tui.selection.indicator=•
 uda.taskwarrior-tui.selection.bold=yes
 uda.taskwarrior-tui.selection.italic=no
 uda.taskwarrior-tui.selection.dim=no
@@ -86,8 +88,9 @@ uda.taskwarrior-tui.style.report.scrollbar=black
 uda.taskwarrior-tui.scrollbar.indicator=█
 uda.taskwarrior-tui.style.report.scrollbar.area=white
 uda.taskwarrior-tui.scrollbar.area=║
-# uda.taskwarrior-tui.task-report.next.filter=$(task show report.next.filter)
-uda.taskwarrior-tui.task-report.next.filter=status:pending
+# uda.taskwarrior-tui.task-report.next.filter=status:pending
+# $(task show report.next.filter)
+uda.taskwarrior-tui.task-report.next.filter=status:pending -WAITING limit:page
 uda.taskwarrior-tui.task-report.auto-insert-double-quotes-on-add=true
 uda.taskwarrior-tui.task-report.auto-insert-double-quotes-on-annotate=true
 uda.taskwarrior-tui.task-report.auto-insert-double-quotes-on-log=true
