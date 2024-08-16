@@ -68,3 +68,7 @@ text-width = 100
 formatter = { command = "swift-format", args = ["format", "--configuration", ".swift-format"] }
 auto-format = true
 language-servers = ['sourcekit-lsp', 'typos']
+
+[[language]] 
+name="bash"
+file-types = ["bash", { glob = "sd_scripts/*" }]
