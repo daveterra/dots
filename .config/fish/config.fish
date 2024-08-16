@@ -148,7 +148,7 @@ if status is-interactive
             set REPLY (read -P "$msg" -n 1)
             echo
         end
-        git commit -m "$msg" && git push
+        git commit -m "[GJC] $msg" && git push
     end
 
     function cheat.sh
