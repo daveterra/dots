@@ -23,13 +23,16 @@ $python$swift\
 
 scan_timeout = 15
 
-# ≺ ❯ ≻  ∫ ﲵ   ❱
+# ≺ ❯ ≻  ∫ ﲵ   ❱ i  ﲵ  
 
 [character]
-success_symbol = "[](bold foreground)"
-error_symbol="[](bold red)"
+success_symbol = "[➜ ](foreground)"
+error_symbol = "[➜ ](red)"
+# success_symbol = "[~> ](bold foreground)"
+# error_symbol="[ᴖ̈] (bold red)"
+# error_symbol="[ᴖ̈ ](bold red)➜"
 vicmd_symbol="[](blue)"
-format="$symbol "
+format="$symbol\u00A0"
 
 [username]
 style_user = "bold bright-blue "
