@@ -57,6 +57,13 @@ file-types = ["md", "txt"]
 scope = "text.markdown"
 formatter = { command = "dprint", args = ["fmt", "--stdin", "md", "-c", "/Users/dave/.config/dprint/dprint.json"]}
 
+
+[[language]]
+name = "task"
+language-servers = [ "ltex", "marksman"]
+file-types = ["task"]
+scope = "text.markdown"
+
 [[language]]
 name = 'c'
 auto-format = true
