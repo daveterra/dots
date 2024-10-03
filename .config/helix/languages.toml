@@ -1,7 +1,7 @@
 [language-server.ltex]
 command="ltex-ls"
 [language-server.ltex.config]
-ltex.dictionary."en-US" = ["Tp-Note", "Zettelkasten", "actigraph", "iCalendar", "actigraphy", "ActigPatch", "Vikand", "Wireguard", "ZTU", "MTEC", "Macrofab", "Actigraphy", "vendored"]
+ltex.dictionary."en-US" = ["Tp-Note", "Zettelkasten", "actigraph", "iCalendar", "actigraphy", "ActigPatch", "Vikand", "Wireguard", "ZTU", "MTEC", "Macrofab", "Actigraphy", "vendored", "Bunzels", "Vanlife", "Homelab", "Homelab"]
 
 # command = "ltex-cli"
 # args = ['--server-command-line=/run/current-system/sw/bin/ltex-ls', '--client-configuration=/Users/dave/temp/ltex.json', '-']
@@ -26,8 +26,8 @@ check.command = "clippy"
 
 [[language]]
 name = "python"
-# language-server = { command = "ruff-lsp" }
 rulers = [120]
+# language-server = { command = "ruff-lsp" }
 # In case you'd like to use ruff alongside black for code formatting:
 formatter = { command = "black", args = ["--quiet", "-"] }
 auto-format = true
@@ -79,3 +79,8 @@ language-servers = ['sourcekit-lsp', 'typos']
 [[language]] 
 name="bash"
 file-types = ["bash", { glob = "sd_scripts/*" }]
+
+[[language]]
+name="toml"
+roots = ["."]
+auto-format = true

@@ -89,6 +89,15 @@ if status is-interactive
         set loc (walk --icons $argv); and cd $loc
     end
 
+    function y
+        set tmp (mktemp -t "yazi-cwd.XXXXXX")
+        yazi $argv --cwd-file="$tmp"
+        if set cwd (command cat -- "$tmp"); and [ -n "$cwd" ]; and [ "$cwd" != "$PWD" ]
+            builtin cd -- "$cwd"
+        end
+        rm -f -- "$tmp"
+    end
+
     # bind \t complete
     # bind \t forward-word
     # bind \t complete-no-pager
@@ -132,7 +141,7 @@ if status is-interactive
 
     function ls --wraps ls -d "ls with preferred options"
         # command ls --group-directories-first --color=always -F1 "$argv"
-        command eza -a --icons --group-directories-first $argv
+        command eza -a --icons --group-directories-first --no-quotes $argv
     end
 
     function please -d "Run the last command as sudo"
