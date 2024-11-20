@@ -99,4 +99,3 @@ uda.taskwarrior-tui.context-menu.select-on-move=false
 uda.taskwarrior-tui.tabs.change-focus-rotate=false
 uda.taskwarrior-tui.tick-rate=1500
 
-context=cps-nix
