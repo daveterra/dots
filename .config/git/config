@@ -3,6 +3,14 @@
 	email = 11788035+daveterra@users.noreply.github.com
 [core]
 	editor = hx
+	pager = delta
+[interactive]
+	diffFilter = delta --color-only
+[delta] 
+	navigate = true
+	dark = true
+[merge]
+	conflictstyle = zdiff3
 [alias]
 	co = checkout
 	ci = commit
@@ -43,3 +51,5 @@
 	enable = true
 [include]
 	path = config.local
+[diff]
+	noprefix = true
