@@ -39,6 +39,8 @@ context.cps.write=project:work.cps +cps
 
 context.cps-nix.read=project:work.cps.nix +nix
 context.cps-nix.write=project:work.cps.nix +cps +nix
+context.home.read=project.not:work project:home or +home
+context.home.write=project:home +home
 
 uda.taskwarrior-tui.keyconfig.quit=q
 uda.taskwarrior-tui.keyconfig.refresh=r

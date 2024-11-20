@@ -179,6 +179,7 @@ if status is-interactive
     alias deepthought "ssh dave@10.14.0.2"
     alias truenas "ssh dave@10.14.0.4"
     alias glados "ssh dave@10.14.0.5"
+    alias ava "ssh dave@10.14.0.7"
     alias work "ssh dave@10.14.0.11"
     alias skynet "ssh pi@10.243.24.42"
     alias cloud "ssh dave@terracloud.us"
