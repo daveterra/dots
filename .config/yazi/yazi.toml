@@ -1,0 +1,3 @@
+[manager]
+ratio = [0, 4, 4]
+linemode = "size_and_mtime"
