@@ -1,13 +1,8 @@
-[user]
-	name = Dave Terra
-	email = 11788035+daveterra@users.noreply.github.com
 [core]
 	editor = hx
 	pager = delta
 [interactive]
 	diffFilter =  "echo -n $(clear); delta --color-only --features=interactive" 
-	# diffFilter =  delta --color-only --features=interactive 
-	# delta --color-only --features=interactive
 [delta] 
 	navigate = true
 	dark = true
@@ -39,8 +34,6 @@
 	verbose = true
     whitespace = fix
 	gpgSign = false
-# [url "ssh://git@github.com/"]
-# 	insteadOf = https://github.com/
 [gpg]
 	format = ssh
 [tag]
@@ -51,7 +44,12 @@
 	sort = version:refname
 [rerere]
 	enable = true
-[include]
-	path = config.local
 [diff]
 	noprefix = true
+[user]
+	name = Dave Terra
+	email = 11788035+daveterra@users.noreply.github.com
+[includeIf "gitdir:~/code/cps/**"]
+	path= ~/.config/git/work
+[include]
+	path = config.local
