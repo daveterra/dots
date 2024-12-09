@@ -1,0 +1,25 @@
+# [Created by task 3.0.0 7/7/2024 09:50:38]
+# DAVE: try `task _config` to show all options
+# DAVE: try `task show` to show all configured options
+# Taskwarrior program configuration file.
+# For more documentation, see https://taskwarrior.org or try 'man task', 'man task-color',
+# 'man task-sync' or 'man taskrc'
+
+# Here is an example of entries that use the default, override and blank values
+#   variable=foo   -- By specifying a value, this overrides the default
+#   variable=      -- By specifying no value, this means no default
+#   #variable=foo  -- By commenting out the line, or deleting it, this uses the default
+
+report.next.columns=id,urgency,description,project,tags,due
+report.next.labels=ID,Urg,Description,Project,Tags,Due
+column.padding=4
+
+# You can also refence environment variables:
+#   variable=$HOME/task
+#   variable=$VALUE
+
+# Use the command 'task show' to see all defaults and overrides
+
+# Files
+data.location=~/.local/share/taskwarrior/
+hooks.location=~/.config/taskwarrior/hooks

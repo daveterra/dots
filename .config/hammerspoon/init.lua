@@ -36,7 +36,7 @@ hs.hotkey.bind({"cmd", "shift"}, "3", function()
 end)
 
 hs.hotkey.bind({"cmd", "shift"}, "4", function() 
-  hs.application.launchOrFocus("Marta")
+  hs.application.launchOrFocus("Calendar")
 end)
 
 hs.hotkey.bind({"cmd", "alt", "ctrl"}, "k", function()

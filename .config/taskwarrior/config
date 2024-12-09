@@ -1,0 +1,24 @@
+include ~/.config/taskwarrior/holidays
+include ~/.config/taskwarrior/base_config
+include ~/.config/taskwarrior/tui
+include ~/.config/taskwarrior/theme/dave.theme
+
+context.personal.read=project.not:work project:life or +life or project:personal or +personal
+
+context.nix.read=(project:computer.nix +nix)
+context.nix.write=(project:computer.nix +nix)
+
+context.cps_apple.read=project:work.cps.cps-apple +cps +mtec
+context.cps_apple.write=project:work.cps.cps-apple +cps +mtec
+
+context.cps.read=project:work.cps +cps
+context.cps.write=project:work.cps +cps
+
+context.cps_nix.read=(project:cps.nix or +nix)
+context.cps_nix.write=(project:cps.nix +cps +nix)
+
+context.home.read=project.not:work project:home or +home
+context.home.write=project:home +home
+
+context=$TW_CONTEXT
+

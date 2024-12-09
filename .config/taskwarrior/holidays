@@ -1,0 +1,57 @@
+################################################################################
+# Sample calendar for the US
+#
+# taskwarrior - a command line task list manager.
+#
+# Copyright 2010 - 2011, Federico Hernandez.
+# All rights reserved.
+#
+# This program is free software; you can redistribute it and/or modify it under
+# the terms of the GNU General Public License as published by the Free Software
+# Foundation; either version 2 of the License, or (at your option) any later
+# version.
+#
+# This program is distributed in the hope that it will be useful, but WITHOUT
+# ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS
+# FOR A PARTICULAR PURPOSE.  See the GNU General Public License for more
+# details.
+#
+# You should have received a copy of the GNU General Public License along with
+# this program; if not, write to the
+#
+#     Free Software Foundation, Inc.,
+#     51 Franklin Street, Fifth Floor,
+#     Boston, MA
+#     02110-1301
+#     USA
+#
+################################################################################
+
+calendar.holidays=sparse
+
+# 2011
+holiday.newyearsday.name=New Year's Day
+holiday.newyearsday.date=20110101
+holiday.martinlutherkingday.name=Birthday of Martin Luther King, Jr.
+holiday.martinlutherkingday.date=20110117
+holiday.presidentsday.name=Washington's Birthday
+holiday.presidentsday.date=20110221
+holiday.patriotsday.name=Patriots' Day
+holiday.patriotsday.date=20110419
+holiday.memorialday.name=Memorial Day
+holiday.memorialday.date=20110530
+holiday.independenceday.name=Independence Day
+holiday.independenceday.date=20110704
+holiday.laborday.name=Labor Day
+holiday.laborday.date=20110905
+holiday.columbusday.name=Columbus Day
+holiday.columbusday.date=20111010
+holiday.veteransdays.name=Veterans Day
+holiday.veteransdays.date=20111111
+holiday.thanksgiving.name=Thanksgiving Day
+holiday.thanksgiving.date=20111124
+holiday.christmasday.name=Christmas Day
+holiday.christmasday.date=20111225
+holiday.newyearseve.name=New Year's Eve
+holiday.newyearseve.date=20111231
+
