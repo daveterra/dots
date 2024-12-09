@@ -1,0 +1,4 @@
+cd ~/.config/taskwarrior/
+cat config | grep -v context\= > new_config
+echo "context=\$TW_CONTEXT" >> new_config
+mv new_config config
