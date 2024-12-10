@@ -48,6 +48,8 @@ set -gx EDITOR hx
 # Settings for taskwarrior
 set -gx TASKRC "$HOME/.config/taskwarrior/config"
 set -gx TASKDATA "$HOME/.local/share/taskwarrior/"
+set -gx TASK_SYNC_UUID $(ioreg -d2 -c IOPlatformExpertDevice | awk -F\" '/IOPlatformUUID/{print $(NF-1)}')
+set -gx TASK_SYNC_SECRET $(cat ~/.config/taskwarrior/secret)
 
 if status is-interactive
     set -gx DEFAULT_USER dave

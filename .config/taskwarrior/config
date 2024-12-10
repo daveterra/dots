@@ -1,6 +1,7 @@
 include ~/.config/taskwarrior/holidays
 include ~/.config/taskwarrior/base_config
 include ~/.config/taskwarrior/tui
+include ~/.config/taskwarrior/sync
 include ~/.config/taskwarrior/theme/dave.theme
 
 context.personal.read=project.not:work project:life or +life or project:personal or +personal
