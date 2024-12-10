@@ -1,3 +1,4 @@
 sync.server.url=http://10.14.0.5:9765
-sync.server.client_id=$TASK_SYNC_UUID
+# sync.server.client_id=$TASK_SYNC_UUID
+sync.server.client_id=FAD42DD8-F604-464D-809F-28B0C6B62870
 sync.encryption_secret=$TASK_SYNC_SECRET
