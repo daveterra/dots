@@ -1,0 +1,2 @@
+cd ~/.config/taskwarrior/
+cp config.locked config
