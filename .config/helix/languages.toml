@@ -1,7 +1,7 @@
 [language-server.ltex]
 command="ltex-ls"
 [language-server.ltex.config]
-ltex.dictionary."en-US" = ["Tp-Note", "Zettelkasten", "actigraph", "iCalendar", "actigraphy", "ActigPatch", "Vikand", "Wireguard", "ZTU", "MTEC", "Macrofab", "Actigraphy", "vendored", "Bunzels", "Vanlife", "Homelab", "Homelab", "-", "T"]
+ltex.dictionary."en-US" = ["Tp-Note", "Zettelkasten", "actigraph", "iCalendar", "actigraphy", "ActigPatch", "Vikand", "Wireguard", "ZTU", "MTEC", "Macrofab", "Actigraphy", "vendored", "Bunzels", "Vanlife", "Homelab", "Homelab", "-", "T", "k"]
 
 # command = "ltex-cli"
 # args = ['--server-command-line=/run/current-system/sw/bin/ltex-ls', '--client-configuration=/Users/dave/temp/ltex.json', '-']
