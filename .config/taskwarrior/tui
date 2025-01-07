@@ -42,14 +42,12 @@ uda.taskwarrior-tui.task-report.prompt-on-delete=false
 uda.taskwarrior-tui.task-report.prompt-on-done=false
 uda.taskwarrior-tui.style.report.selection=
 uda.taskwarrior-tui.style.context.active=black on rgb444
-uda.taskwarrior-tui.style.calendar.title=black on rgb444
-uda.taskwarrior-tui.style.report.scrollbar=black
+uda.taskwarrior-tui.style.calendar.title=red on white
+uda.taskwarrior-tui.style.report.scrollbar=red
 uda.taskwarrior-tui.scrollbar.indicator=█
 uda.taskwarrior-tui.style.report.scrollbar.area=white
 uda.taskwarrior-tui.scrollbar.area=║
-# uda.taskwarrior-tui.task-report.next.filter=status:pending
-# $(task show report.next.filter)
-uda.taskwarrior-tui.task-report.next.filter=status:pending -WAITING limit:page
+uda.taskwarrior-tui.task-report.next.filter=status:pending -WAITING
 uda.taskwarrior-tui.task-report.auto-insert-double-quotes-on-add=true
 uda.taskwarrior-tui.task-report.auto-insert-double-quotes-on-annotate=true
 uda.taskwarrior-tui.task-report.auto-insert-double-quotes-on-log=true
@@ -57,4 +55,6 @@ uda.taskwarrior-tui.task-report.reset-filter-on-esc=true
 uda.taskwarrior-tui.context-menu.select-on-move=true
 uda.taskwarrior-tui.tabs.change-focus-rotate=false
 uda.taskwarrior-tui.tick-rate=1500
+# uda.taskwarrior-tui.background_process=ping -c 1 10.14.0.5 && task sync
+# uda.taskwarrior-tui.background_process_period=60
 
