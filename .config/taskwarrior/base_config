@@ -21,5 +21,7 @@ column.padding=4
 # Use the command 'task show' to see all defaults and overrides
 
 # Files
-data.location=~/.local/share/taskwarrior/
 hooks.location=~/.config/taskwarrior/hooks
+
+# Overridden by fish config anyway
+# data.location=~/.local/share/taskwarrior2/

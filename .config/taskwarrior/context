@@ -1,5 +1,3 @@
-context.personal.read=project.not:cps project:life or +life or project:personal or +personal
-
 context.nix.read=(project:computer.nix +nix)
 context.nix.write=(project:computer.nix +nix)
 
@@ -18,7 +16,12 @@ context.cps_nix.write=(project:cps.nix +cps +nix)
 context.pld.read=(project:cps.pld)
 context.pld.write=project:cps.pld
 
-context.home.read=project.not:cps project:home or +home
+context.home.read=(project:home or +home)
 context.home.write=project:home +home
+
+context.home.shopping.read=(project:home.shopping or +shopping)
+context.home.shopping.write=project:home.shopping +home +shopping
+
+context.personal.read=(project.not:cps project:life or +life or project:personal or +personal)
 
 context=$TW_CONTEXT
