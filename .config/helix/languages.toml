@@ -1,7 +1,7 @@
 [language-server.ltex]
 command="ltex-ls"
 [language-server.ltex.config]
-ltex.dictionary."en-US" = ["Tp-Note", "Zettelkasten", "actigraph", "iCalendar", "actigraphy", "ActigPatch", "Vikand", "Wireguard", "ZTU", "MTEC", "Macrofab", "Actigraphy", "vendored", "Bunzels", "Vanlife", "Homelab", "Homelab", "-", "T", "k"]
+ltex.dictionary."en-US" = ["Tp-Note", "Zettelkasten", "actigraph", "iCalendar", "actigraphy", "ActigPatch", "Vikand", "Wireguard", "ZTU", "MTEC", "Macrofab", "Actigraphy", "vendored", "Bunzels", "Vanlife", "Homelab", "Homelab", "-", "T", "k", " ", "r", "m"]
 
 # command = "ltex-cli"
 # args = ['--server-command-line=/run/current-system/sw/bin/ltex-ls', '--client-configuration=/Users/dave/temp/ltex.json', '-']
@@ -56,6 +56,12 @@ language-servers = [ "ltex", "marksman"]
 file-types = ["md", "txt"]
 scope = "text.markdown"
 formatter = { command = "dprint", args = ["fmt", "--stdin", "md", "-c", "/Users/dave/.config/dprint/dprint.json"]}
+
+[[language]]
+name = "toml"
+rulers = [99]
+auto-format = true
+formatter = { command = "dprint", args = ["fmt", "--stdin", "toml", "-c", "/Users/dave/.config/dprint/dprint.json"]}
 
 
 [[language]]

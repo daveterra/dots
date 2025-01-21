@@ -23,7 +23,7 @@ $python$swift\
 
 scan_timeout = 15
 
-# ≺ ❯ ≻  ∫ ﲵ   ❱ i  ﲵ  
+# ≺ ❯ ≻  ∫ ﲵ   ❱ i  ﲵ
 
 [character]
 success_symbol = "[➜ ](foreground)"
@@ -31,8 +31,8 @@ error_symbol = "[➜ ](red)"
 # success_symbol = "[~> ](bold foreground)"
 # error_symbol="[ᴖ̈] (bold red)"
 # error_symbol="[ᴖ̈ ](bold red)➜"
-vicmd_symbol="[](blue)"
-format="$symbol\u00A0"
+vicmd_symbol = "[](blue)"
+format = "$symbol\u00A0"
 
 [username]
 style_user = "bold bright-blue "
@@ -42,14 +42,14 @@ disabled = false
 show_always = false
 
 [sudo]
-format="[$symbol ]($style)"
-style="bold red"
-symbol=""
-disabled=false
+format = "[$symbol ]($style)"
+style = "bold red"
+symbol = ""
+disabled = false
 
 [cmd_duration]
-show_milliseconds=false
-format="[ $duration]($style) "
+show_milliseconds = false
+format = "[ $duration]($style) "
 
 [git_branch]
 symbol = ""
@@ -72,28 +72,27 @@ format = "[$hostname]($style) "
 style = "fg:yellow"
 
 [python]
-symbol="🐍"
-format="[(⟪$symbol($pyenv_prefix )$virtualenv⟫ )](bold green)"
-
+symbol = "🐍"
+format = "[(⟪$symbol($pyenv_prefix )$virtualenv⟫ )](bold green)"
 
 [custom.linux]
 command = ""
-when="true"
+when = "true"
 os = "linux"
 symbol = ""
 format = "[$symbol ]($style)"
 
 [custom.macos]
 command = ""
-when="true"
+when = "true"
 os = "macos"
 symbol = ""
-style="fg:foreground"
+style = "fg:foreground"
 format = "[$symbol ]($style)"
 
 [directory]
-home_symbol="~"
-style = "bold cyan"
+home_symbol = "~"
+style = "cyan"
 truncate_to_repo = true
 truncation_length = 7
 fish_style_pwd_dir_length = 1

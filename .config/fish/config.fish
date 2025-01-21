@@ -168,6 +168,7 @@ if status is-interactive
     alias cheat cheat.sh
     alias nls "sd notes ls"
     alias ncd "cd ~/Notes"
+    alias t taskwarrior-tui
 
     # Alias
     alias top btop

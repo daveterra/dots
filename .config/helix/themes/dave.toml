@@ -1,9 +1,8 @@
 # Scheme name: Dave
-# Scheme author: Me
 # Template author: Tinted Theming (https://github.com/tinted-theming)
 
 "attributes" = "base09"
-"comment" = { fg = "base03", modifiers = ["italic"] }
+"comment" = { fg = "base03", modifiers = ["italic", "underlined"] }
 "constant" = "base09"
 "constant.character.escape" = "base0C"
 "constant.numeric" = "base09"
@@ -22,7 +21,7 @@
 "namespace" = "base0E"
 "operator" = "base05"
 "special" = "base0D"
-"string"  = "base0B"
+"string" = "base0B"
 "type" = "base0A"
 "variable" = "base08"
 "variable.other.member" = "base0C"
