@@ -1,0 +1,6 @@
+# Scheme name: Dave
+# Template author: Tinted Theming (https://github.com/tinted-theming)
+
+inherits = "adwaita-dark"
+
+"comment" = { fg = "dark_1", modifiers = ["bold"] }
