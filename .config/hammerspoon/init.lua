@@ -39,6 +39,10 @@ hs.hotkey.bind({"cmd", "shift"}, "4", function()
   hs.application.launchOrFocus("Calendar")
 end)
 
+hs.hotkey.bind({"cmd", "shift"}, "5", function() 
+  hs.application.launchOrFocus("KiCad")
+end)
+
 hs.hotkey.bind({"cmd", "alt", "ctrl"}, "k", function()
   local win = hs.window.focusedWindow()
   hs.grid.set(win, hs.geometry.rect(0,0,6,3))

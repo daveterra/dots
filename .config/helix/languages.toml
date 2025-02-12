@@ -1,7 +1,25 @@
 [language-server.ltex]
-command="ltex-ls"
+command = "ltex-ls"
 [language-server.ltex.config]
-ltex.dictionary."en-US" = ["Tp-Note", "Zettelkasten", "actigraph", "iCalendar", "actigraphy", "ActigPatch", "Vikand", "Wireguard", "ZTU", "MTEC", "Macrofab", "Actigraphy", "vendored", "Bunzels", "Vanlife", "Homelab", "Homelab", "-", "T", "k", " ", "r", "m"]
+ltex.dictionary."en-US" = [
+  "Tp-Note",
+  "Zettelkasten",
+  "actigraph",
+  "iCalendar",
+  "actigraphy",
+  "ActigPatch",
+  "Vikand",
+  "Wireguard",
+  "ZTU",
+  "MTEC",
+  "Macrofab",
+  "Actigraphy",
+  "vendored",
+  "Bunzels",
+  "Vanlife",
+  "Homelab",
+  "IFBV",
+]
 
 # command = "ltex-cli"
 # args = ['--server-command-line=/run/current-system/sw/bin/ltex-ls', '--client-configuration=/Users/dave/temp/ltex.json', '-']
@@ -15,7 +33,6 @@ command = "typos-lsp"
 [language-server.sourcekit-lsp]
 command = "sourcekit-lsp"
 # args =  ["--log-level", "debug"]
-
 
 [language-server.clangd]
 command = 'clangd'
@@ -47,26 +64,24 @@ auto-format = true
 name = "typescript"
 auto-format = true
 
-
 [[language]]
 name = "markdown"
 rulers = [99]
 auto-format = true
-language-servers = [ "ltex", "marksman"]
+language-servers = ["ltex", "marksman"]
 file-types = ["md", "txt"]
 scope = "text.markdown"
-formatter = { command = "dprint", args = ["fmt", "--stdin", "md", "-c", "/Users/dave/.config/dprint/dprint.json"]}
+formatter = { command = "dprint", args = ["fmt", "--stdin", "md", "-c", "/Users/dave/.config/dprint/dprint.json"] }
 
 [[language]]
 name = "toml"
 rulers = [99]
 auto-format = true
-formatter = { command = "dprint", args = ["fmt", "--stdin", "toml", "-c", "/Users/dave/.config/dprint/dprint.json"]}
-
+formatter = { command = "dprint", args = ["fmt", "--stdin", "toml", "-c", "/Users/dave/.config/dprint/dprint.json"] }
 
 [[language]]
 name = "task"
-language-servers = [ "ltex", "marksman"]
+language-servers = ["ltex", "marksman"]
 file-types = ["task"]
 scope = "text.markdown"
 
@@ -89,11 +104,11 @@ formatter = { command = "swift-format", args = ["format", "--configuration", ".s
 auto-format = true
 language-servers = ['sourcekit-lsp', 'typos']
 
-[[language]] 
-name="bash"
+[[language]]
+name = "bash"
 file-types = ["bash", { glob = "sd_scripts/*" }]
 
 [[language]]
-name="toml"
+name = "toml"
 roots = ["."]
 auto-format = true
