@@ -19,6 +19,8 @@ ltex.dictionary."en-US" = [
   "Vanlife",
   "Homelab",
   "IFBV",
+  "ISET",
+  "UVLO",
 ]
 
 # command = "ltex-cli"
@@ -51,7 +53,7 @@ auto-format = true
 
 [[language]]
 name = "rust"
-language-servers = ['rust-analyzer', 'typos']
+language-servers = ['rust-analyzer']
 rulers = [99]
 text-width = 99
 

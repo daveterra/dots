@@ -1,4 +1,49 @@
 require "darkmenu"
+-- require "cherry"
+
+cherry=hs.loadSpoon("Cherry")
+-- cherry.start()
+hs.loadSpoon("ModalMgr")
+hs.loadSpoon("Countdown")
+
+hscountdM_keys = {"alt", "I"}
+if spoon.CountDown then
+    spoon.ModalMgr:new("countdownM")
+    local cmodal = spoon.ModalMgr.modal_list["countdownM"]
+    cmodal:bind('', 'escape', 'Deactivate countdownM', function() spoon.ModalMgr:deactivate({"countdownM"}) end)
+    cmodal:bind('', 'Q', 'Deactivate countdownM', function() spoon.ModalMgr:deactivate({"countdownM"}) end)
+    cmodal:bind('', 'tab', 'Toggle Cheatsheet', function() spoon.ModalMgr:toggleCheatsheet() end)
+    cmodal:bind('', '0', '5 Minutes Countdown', function()
+        spoon.CountDown:startFor(5)
+        spoon.ModalMgr:deactivate({"countdownM"})
+    end)
+    for i = 1, 9 do
+        cmodal:bind('', tostring(i), string.format("%s Minutes Countdown", 10 * i), function()
+            spoon.CountDown:startFor(10 * i)
+            spoon.ModalMgr:deactivate({"countdownM"})
+        end)
+    end
+    cmodal:bind('', 'return', '25 Minutes Countdown', function()
+        spoon.CountDown:startFor(25)
+        spoon.ModalMgr:deactivate({"countdownM"})
+    end)
+    cmodal:bind('', 'space', 'Pause/Resume CountDown', function()
+        spoon.CountDown:pauseOrResume()
+        spoon.ModalMgr:deactivate({"countdownM"})
+    end)
+
+    -- Register countdownM with modal supervisor
+    hscountdM_keys = hscountdM_keys or {"alt", "I"}
+    if string.len(hscountdM_keys[2]) > 0 then
+        spoon.ModalMgr.supervisor:bind(hscountdM_keys[1], hscountdM_keys[2], "Enter countdownM Environment", function()
+            spoon.ModalMgr:deactivateAll()
+            -- Show the keybindings cheatsheet once countdownM is activated
+            spoon.ModalMgr:activate({"countdownM"}, "#FF6347", true)
+        end)
+    end
+
+    hs.alert.show("Countdown")
+end
 
 local grid = hs.geometry.size(6, 6)
 hs.grid.setGrid(grid)
@@ -237,3 +282,8 @@ spoon.RoundedCorners:start()
 
 myWatcher = hs.pathwatcher.new(os.getenv("HOME") .. "/.config/hammerspoon/", reloadConfig):start()
 hs.alert.show("Config loaded")
+
+-- https://github.com/ashfinal/awesome-hammerspoon/blob/master/init.lua
+hshelp_keys = {{"alt", "shift"}, "/"}
+hscountdM_keys = {"alt", "I"}
+spoon.ModalMgr.supervisor:enter()
