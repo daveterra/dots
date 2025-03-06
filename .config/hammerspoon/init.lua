@@ -4,15 +4,14 @@ require "darkmenu"
 cherry=hs.loadSpoon("Cherry")
 -- cherry.start()
 hs.loadSpoon("ModalMgr")
-hs.loadSpoon("Countdown")
+hs.loadSpoon("CountDown")
 
 hscountdM_keys = {"alt", "I"}
 if spoon.CountDown then
     spoon.ModalMgr:new("countdownM")
     local cmodal = spoon.ModalMgr.modal_list["countdownM"]
-    cmodal:bind('', 'escape', 'Deactivate countdownM', function() spoon.ModalMgr:deactivate({"countdownM"}) end)
-    cmodal:bind('', 'Q', 'Deactivate countdownM', function() spoon.ModalMgr:deactivate({"countdownM"}) end)
-    cmodal:bind('', 'tab', 'Toggle Cheatsheet', function() spoon.ModalMgr:toggleCheatsheet() end)
+    cmodal:bind('', 'Q', 'Deactivate countdownM', function() spoon.CountDown.cancel() end)
+    cmodal:bind('', 'escape', 'Toggle Cheatsheet', function() spoon.ModalMgr:toggleCheatsheet() end)
     cmodal:bind('', '0', '5 Minutes Countdown', function()
         spoon.CountDown:startFor(5)
         spoon.ModalMgr:deactivate({"countdownM"})
@@ -42,7 +41,11 @@ if spoon.CountDown then
         end)
     end
 
-    hs.alert.show("Countdown")
+    -- spoon.CountDown.menuBarAlwaysShow = true
+    spoon.CountDown.warningShow = true
+    spoon.CountDown.menuBarIconActive = "⏲"
+    spoon.CountDown.barCanvasHeight = 10
+
 end
 
 local grid = hs.geometry.size(6, 6)
