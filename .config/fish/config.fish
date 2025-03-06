@@ -184,7 +184,7 @@ if status is-interactive
     alias glados "ssh dave@10.14.0.5"
     alias ava "ssh dave@10.14.0.7"
     alias work "ssh dave@10.14.0.11"
-    alias skynet "ssh pi@10.243.24.42"
+    alias skynet "ssh root@209.141.41.43"
     alias cloud "ssh dave@terracloud.us"
     alias router "ssh admin@10.14.0.1"
     alias myip "curl ipinfo.io/ip"
