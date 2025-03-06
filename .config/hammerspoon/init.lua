@@ -1,8 +1,5 @@
 require "darkmenu"
--- require "cherry"
 
-cherry=hs.loadSpoon("Cherry")
--- cherry.start()
 hs.loadSpoon("ModalMgr")
 hs.loadSpoon("CountDown")
 
