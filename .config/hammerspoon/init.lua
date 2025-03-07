@@ -32,6 +32,8 @@ if spoon.CountDown then
     hscountdM_keys = hscountdM_keys or {"alt", "I"}
     if string.len(hscountdM_keys[2]) > 0 then
         spoon.ModalMgr.supervisor:bind(hscountdM_keys[1], hscountdM_keys[2], "Enter countdownM Environment", function()
+            -- I don't really know waht this does but it makes modals work bette
+            hs.dockIcon(false)
             spoon.ModalMgr:deactivateAll()
             -- Show the keybindings cheatsheet once countdownM is activated
             spoon.ModalMgr:activate({"countdownM"}, "#FF6347", true)
@@ -86,6 +88,10 @@ end)
 
 hs.hotkey.bind({"cmd", "shift"}, "5", function() 
   hs.application.launchOrFocus("KiCad")
+end)
+
+hs.hotkey.bind({"cmd", "shift"}, "9", function()
+  hs.spaces.gotoSpace(1)
 end)
 
 hs.hotkey.bind({"cmd", "alt", "ctrl"}, "k", function()
