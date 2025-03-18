@@ -1,7 +1,9 @@
 [language-server.ltex]
 command = "ltex-ls"
 [language-server.ltex.config]
+# ltex.dictionary."en-US" = ":/Users/dave/.config/helix/ltex.dictionary.en-US.txt"
 ltex.dictionary."en-US" = [
+  # LTEX_GLOBAL_STORAGE_PATH=/.config/helix/ltex.dictionary.en-US.txt
   "Tp-Note",
   "Zettelkasten",
   "actigraph",
@@ -21,6 +23,7 @@ ltex.dictionary."en-US" = [
   "IFBV",
   "ISET",
   "UVLO",
+  "Digikey",
 ]
 
 # command = "ltex-cli"
@@ -42,6 +45,8 @@ args = ['--function-arg-placeholders', '--completion-style=detailed', '--clang-t
 
 [language-server.rust-analyzer.config]
 check.command = "clippy"
+check.workspace = false
+# runnables.extraArgs = ["--release"]
 
 [[language]]
 name = "python"
@@ -79,7 +84,8 @@ formatter = { command = "dprint", args = ["fmt", "--stdin", "md", "-c", "/Users/
 name = "toml"
 rulers = [99]
 auto-format = true
-formatter = { command = "dprint", args = ["fmt", "--stdin", "toml", "-c", "/Users/dave/.config/dprint/dprint.json"] }
+formatter = { command = "taplo", args = ["fmt", "-f", "-"] }
+# { command = "dprint", args = ["fmt", "--stdin", "toml", "-c", "/Users/dave/.config/dprint/dprint.json"] }
 
 [[language]]
 name = "task"
@@ -109,8 +115,3 @@ language-servers = ['sourcekit-lsp', 'typos']
 [[language]]
 name = "bash"
 file-types = ["bash", { glob = "sd_scripts/*" }]
-
-[[language]]
-name = "toml"
-roots = ["."]
-auto-format = true

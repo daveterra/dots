@@ -1,4 +1,5 @@
-
+uda.taskwarrior-tui.shortcuts.1=~/.config/taskwarrior/scripts/open.sh
+uda.taskwarrior-tui.keyconfig.shortcut1=o
 uda.taskwarrior-tui.keyconfig.quit=q
 uda.taskwarrior-tui.keyconfig.refresh=r
 uda.taskwarrior-tui.keyconfig.go-to-bottom=G

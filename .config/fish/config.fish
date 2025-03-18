@@ -3,10 +3,22 @@
 ###############################################################################
 #
 # Reference is: https://fishshell.com/docs/current/language.html
-#
 
-# Nix darwin
+
+# Nix
 fish_add_path /run/current-system/sw/bin
+
+# XDG
+set -gx XDG_DATA_HOME "$HOME/.local/share"
+set -gx XDG_CONFIG_HOME "$HOME/.config"
+set -gx XDG_STATE_HOME "$HOME/.local/state"
+set -gx XDG_CACHE_HOME "$HOME/.cache"
+set -l os (uname)
+if test "$os" = Darwin
+    set -gx XDG_RUNTIME_DIR "/tmp/$(id -u)"
+else
+    set -gx XDG_RUNTIME_DIR "/run/user/$(id -u)"
+end
 
 set -gx LC_ALL en_US.UTF-8
 set -gx LANG en_US.UTF-8
@@ -53,8 +65,6 @@ set -gx TASK_SYNC_SECRET $(cat ~/.config/taskwarrior/secret)
 
 if status is-interactive
     set -gx DEFAULT_USER dave
-    set -gx XDG_DATA_HOME "$HOME/.local/share"
-    set -gx XDG_CONFIG_HOME "$HOME/.config"
 
     # Set locations for tools so $HOME isn't clogged up
     set -gx CHTSH_CONF "$XDG_CONFIG_HOME/cht.sh/cht.sh.conf"
@@ -77,7 +87,7 @@ if status is-interactive
   "
     set -U FZF_TMUX_OPTS "-p80%,60%"
 
-    fish_config theme choose cfrappe
+    # fish_config theme choose cfrappe
 
     function pipupdate -d "Update out of date packages"
         pip list -o | awk 'NR > 2 {print $1}' | xargs pip install -U
