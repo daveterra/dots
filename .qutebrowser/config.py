@@ -2516,3 +2516,5 @@ c.url.searchengines = {'DEFAULT': 'https://kagi.com/search?q={}'}
 
 config.source('themes/adwaita.py')
 config.load_autoconfig(False)
+config.bind('<ctrl-s>', 'config-cycle statusbar.show always in-mode')
+

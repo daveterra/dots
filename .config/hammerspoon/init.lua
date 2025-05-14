@@ -75,7 +75,7 @@ hs.hotkey.bind({"cmd", "shift"}, "1", function()
 end)
 
 hs.hotkey.bind({"cmd", "shift"}, "2", function() 
-  hs.application.launchOrFocus("Firefox")
+  hs.application.launchOrFocus("qutebrowser")
 end)
 
 hs.hotkey.bind({"cmd", "shift"}, "3", function() 
