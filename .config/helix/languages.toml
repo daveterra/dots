@@ -1,9 +1,12 @@
 [language-server.ltex]
 command = "ltex-ls"
 [language-server.ltex.config]
-# ltex.dictionary."en-US" = ":/Users/dave/.config/helix/ltex.dictionary.en-US.txt"
 ltex.dictionary."en-US" = [
   # LTEX_GLOBAL_STORAGE_PATH=/.config/helix/ltex.dictionary.en-US.txt
+  "OFA",
+  "JLC",
+  "OGA",
+  "MacroFab",
   "Tp-Note",
   "Zettelkasten",
   "actigraph",
@@ -24,7 +27,11 @@ ltex.dictionary."en-US" = [
   "ISET",
   "UVLO",
   "Digikey",
-]
+  "changelist",
+  "Changelist",
+  "vias",
+  "GPIO",
+] # ltex.dictionary."en-US" = ":/Users/dave/.config/helix/ltex.dictionary.en-US.txt"
 
 # command = "ltex-cli"
 # args = ['--server-command-line=/run/current-system/sw/bin/ltex-ls', '--client-configuration=/Users/dave/temp/ltex.json', '-']
@@ -41,12 +48,12 @@ command = "sourcekit-lsp"
 
 [language-server.clangd]
 command = 'clangd'
-args = ['--function-arg-placeholders', '--completion-style=detailed', '--clang-tidy', '--log=verbose']
-
-[language-server.rust-analyzer.config]
-check.command = "clippy"
-check.workspace = false
-# runnables.extraArgs = ["--release"]
+args = [
+  '--function-arg-placeholders',
+  '--completion-style=detailed',
+  '--clang-tidy',
+  '--log=verbose',
+]
 
 [[language]]
 name = "python"
@@ -55,6 +62,10 @@ rulers = [120]
 # In case you'd like to use ruff alongside black for code formatting:
 formatter = { command = "black", args = ["--quiet", "-"] }
 auto-format = true
+
+[language-server.rust-analyzer.config]
+check.command = "clippy"
+check.workspace = true
 
 [[language]]
 name = "rust"
@@ -78,7 +89,13 @@ auto-format = true
 language-servers = ["ltex", "marksman"]
 file-types = ["md", "txt"]
 scope = "text.markdown"
-formatter = { command = "dprint", args = ["fmt", "--stdin", "md", "-c", "/Users/dave/.config/dprint/dprint.json"] }
+formatter = { command = "dprint", args = [
+  "fmt",
+  "--stdin",
+  "md",
+  "-c",
+  "/Users/dave/.config/dprint/dprint.json",
+] }
 
 [[language]]
 name = "toml"
@@ -108,7 +125,11 @@ auto-format = true
 name = "swift"
 rulers = [101]
 text-width = 100
-formatter = { command = "swift-format", args = ["format", "--configuration", ".swift-format"] }
+formatter = { command = "swift-format", args = [
+  "format",
+  "--configuration",
+  ".swift-format",
+] }
 auto-format = true
 language-servers = ['sourcekit-lsp', 'typos']
 

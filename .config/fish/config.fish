@@ -7,6 +7,7 @@
 
 # Nix
 fish_add_path /run/current-system/sw/bin
+fish_add_path /opt/homebrew/bin
 
 # XDG
 set -gx XDG_DATA_HOME "$HOME/.local/share"
