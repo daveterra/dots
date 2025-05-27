@@ -1766,7 +1766,7 @@ c.fonts.default_size = '12pt'
 ##   - never: Never show the scrollbar.
 ##   - when-searching: Show the scrollbar when searching for text in the webpage. With the QtWebKit backend, this is equal to `never`.
 ##   - overlay: Show an overlay scrollbar. On macOS, this is unavailable and equal to `when-searching`; with the QtWebKit backend, this is equal to `never`. Enabling/disabling overlay scrollbars requires a restart.
-# c.scrolling.bar = 'overlay'
+c.scrolling.bar = 'always'
 
 ## Enable smooth scrolling for web pages. Note smooth scrolling does not
 ## work with the `:scroll-px` command.
@@ -2515,6 +2515,8 @@ c.url.searchengines = {'DEFAULT': 'https://kagi.com/search?q={}'}
 
 
 config.source('themes/adwaita.py')
-config.load_autoconfig(False)
 config.bind('<ctrl-s>', 'config-cycle statusbar.show always in-mode')
+config.bind('<ctrl-t>', 'config-cycle tabs.show always switching')
+config.bind('<meta-shift-l>', 'spawn --userscript qute-bitwarden')
 
+config.load_autoconfig(False)

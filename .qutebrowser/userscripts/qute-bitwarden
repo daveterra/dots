@@ -52,18 +52,18 @@ def qute_command(command):
 
 
 def ask_password():
-    _, out, err = osascript.run(
-        'Tell application "System Events" to display dialog "Enter your Bitwarden master password: " with hidden answer default answer ""'
-    )
+    # _, out, err = osascript.run(
+    #     'Tell application "System Events" to display dialog "Enter your Bitwarden master password: " with hidden answer default answer ""'
+    # )
 
-    if err:
-        raise Exception('Could not unlock vault')
+    # if err:
+    #     raise Exception('Could not unlock vault')
 
-    last_semicolon_index = out.rfind(':')
-    password = out[last_semicolon_index + 1:]
+    # last_semicolon_index = out.rfind(':')
+    # password = out[last_semicolon_index + 1:]
 
     bitwarden_process = subprocess.Popen(
-        ['bw', 'unlock', '--raw', password.strip()],
+        ['/bin/cat', '/Users/dave/.bwsession'],
         universal_newlines=True,
         stdin=subprocess.PIPE,
         stdout=subprocess.PIPE
@@ -124,15 +124,19 @@ def get_session_key():
 
 
 def get_bitwarden_items(domain):
+    print("A")
     session_key = get_session_key()
+    print("B")
     process = subprocess.Popen(
         ['bw', 'list', 'items', '--session', session_key, '--url', domain],
         stdout=subprocess.PIPE,
         stderr=subprocess.PIPE,
     )
+    print("C")
 
     output, error = process.communicate()
 
+    print("D")
     if error:
         msg = 'Bitwarden CLI returned for {:s} - {:s}'.format(domain, error)
         stderr(msg)
@@ -169,7 +173,7 @@ def get_selected_item(items):
     choices = [
         '{:s} | {:s} | {:s}'.format(
             item['name'],
-            item['login']['username'],
+            "" if item['login'] is None or item['login']['username'] is None else item['login']['username'],
             item['id']
         ) for item in items
     ]
@@ -194,6 +198,8 @@ def main(arguments):
         argument_parser.print_help()
         return ExitCodes.FAILURE
 
+    print(arguments.url)
+
     extract_result = tldextract.extract(arguments.url)
     url_parts = filter(None, [
         extract_result.fqdn,
@@ -202,6 +208,7 @@ def main(arguments):
         extract_result.domain,
         extract_result.ipv4
     ])
+    print("1")
 
     # find items for given url
     items = []
@@ -215,12 +222,15 @@ def main(arguments):
         items = found_items 
         break
 
+    print("2")
 
     if not items:
         stderr('No items found for URL {!r} found!'.format(arguments.url))
         return ExitCodes.NO_ITEMS_FOUND
 
     selection = get_selected_item(items)
+
+    print("3")
 
     # Nothing was selected, simply return
     if not selection:
