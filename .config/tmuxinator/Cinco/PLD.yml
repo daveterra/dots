@@ -1,0 +1,24 @@
+---
+name: PLD
+project_root: "/Users/dave/code/cps/"
+pre_window: set TW_CONTEXT pld
+attach: true
+windows:
+- Notes:
+    layout: even-horizontal
+    root: "/Users/dave/Notes/40 Work/42 CPS/42.15 Portable Light Device"
+    panes:
+        - hx notes.md
+        - taskwarrior-tui
+- Firmware:
+    layout: even-horizontal
+    root: "/Users/dave/code/cps/cps-clc-rs/"
+    panes:
+        - hx
+        - ""
+- Electrical:
+    layout: even-horizontal
+    root: "/Users/dave/code/cps/electrical_design/PLD/"
+    panes:
+        - ""
+        - ""

@@ -1,0 +1,12 @@
+---
+name: Email
+project_root: "/Users/dave/"
+windows:
+  - Email:
+      panes:
+        - cd /Users/dave/mail && mutt
+  - Logs:
+      layout: main-vertical
+      panes:
+        - bbw serve --port 2525
+        - tail -f /tmp/mbsync.log

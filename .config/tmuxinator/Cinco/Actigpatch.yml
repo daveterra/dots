@@ -1,0 +1,23 @@
+---
+name: Actigpatch
+project_root: "/Users/dave/code/cps/"
+pre_window: export TW_CONTEXT cps_actigpatch
+attach: true
+windows:
+- Notes:
+    layout: even-horizontal
+    root: "/Users/dave/Notes/40 Work/42 CPS/42.14 ActigPatch/"
+    panes:
+        - hx notes.md
+        - taskwarrior-tui
+- Firmware:
+    layout: even-horizontal
+    root: "/Users/dave/code/cps/dt_ble_patch_firmware/"
+    panes:
+        - hx
+        - make test
+- Electrical:
+    layout: even-horizontal
+    root: "/Users/dave/code/cps/electrical_design/Patch/"
+    panes:
+        -

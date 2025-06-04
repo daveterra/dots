@@ -1,0 +1,21 @@
+#!/usr/bin/env bash
+
+URL=$1
+TYPE=$2
+
+echo "$URL" "$TYPE"
+
+case "$TYPE" in
+  article | link)
+  qutebrowser "$URL"
+  ;; 
+
+  image)
+  # cd "$(mktemp -d)" || exit
+  # wget "$URL"
+  echo "Loading..."
+  kitty icat "$URL"
+  read -p "Press Enter to return"
+  ;;
+esac
+

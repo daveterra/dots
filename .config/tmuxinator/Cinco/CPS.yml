@@ -1,0 +1,21 @@
+---
+name: CPS
+project_root: '/Users/dave/Notes/40 Work/42 CPS/'
+root: '/Users/dave/Notes/40 Work/42 CPS/'
+startup_window: Notes
+shell: fish
+pre_window: set -gx TW_CONTEXT cps
+
+windows:
+  - Notes:
+      layout: main-vertical
+      panes:
+        - main:
+            - yazi
+        - second:
+            - taskwarrior-tui
+  - Scratch:
+      layout: main-vertical
+      panes:
+        -  #
+        -  #

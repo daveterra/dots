@@ -1,0 +1,9 @@
+---
+name: Scratch
+project_root: '~'
+windows:
+  - email:
+      layout: even-horizontal
+      panes:
+        - tmux split-window -v -t 2 -l 10
+        - tmux split-window -fvb && tmux resize-pane -y 10

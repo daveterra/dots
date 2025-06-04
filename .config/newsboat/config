@@ -1,0 +1,64 @@
+auto-reload yes
+prepopulate-query-feeds yes
+max-items 500
+mark-as-read-on-hover yes
+article-sort-order date-desc
+
+urls-source "miniflux"
+miniflux-url "https://rss.djt.xyz"
+miniflux-login "dave"
+miniflux-passwordeval "sd bw get --item 3eb19d42-8e7e-4385-856a-af8c01668e19"
+miniflux-flag-star "a"
+
+
+# unbind keys
+unbind-key ENTER
+unbind-key j
+unbind-key k
+unbind-key J
+unbind-key K
+unbind-key <C-u>
+unbind-key <C-d>
+
+# bind keys - vim style
+bind-key j down
+bind-key k up
+bind-key l open
+bind-key h quit
+bind-key ESC quit
+bind-key J next article
+bind-key K prev article
+bind-key j down article
+bind-key k up article
+bind-key ^U pageup
+bind-key ^D pagedown
+
+# Colors
+color background         default   default
+color listnormal         default   default
+color listnormal_unread  green     default
+color listfocus          black     cyan
+color listfocus_unread   black     cyan
+color article            default   default
+color info               black     magenta
+color hint-separator     black     magenta
+color hint-description   black     magenta
+color hint-key           blue      magenta
+color title              white     magenta bold
+
+# Formats
+articlelist-format  "%4i %f %D  %?T?|%-17T|  ?%t"
+
+# highlights
+highlight article "^(Title):.*$" blue default
+highlight article "https?://[^ ]+" red default
+highlight article "\\[image\\ [0-9]+\\]" green default
+
+browser "~/.config/newsboat/opener %u %t"
+
+# highlight article "^(Feed|Title|Author|Link|Date): .+" color4 default bold
+# highlight article "^(Feed|Title|Author|Link|Date):" color14 default bold
+
+# highlight article "\\((link|image|video)\\)" color8 default
+# highlight article "https?://[^ ]+" color4 default
+# highlight article "\[[0-9]+\]" color6 default bold
