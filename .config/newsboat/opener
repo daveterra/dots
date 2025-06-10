@@ -1,4 +1,4 @@
-#!/usr/bin/env bash
+#!/run/current-system/sw/bin/bash
 
 URL=$1
 TYPE=$2
@@ -7,7 +7,8 @@ echo "$URL" "$TYPE"
 
 case "$TYPE" in
   article | link)
-  qutebrowser "$URL"
+  # Don't open newsboat in a nix-shell
+  qutebrowser --target tab "$URL"
   ;; 
 
   image)
@@ -19,3 +20,4 @@ case "$TYPE" in
   ;;
 esac
 
+      

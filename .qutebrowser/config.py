@@ -2518,5 +2518,6 @@ config.source('themes/adwaita.py')
 config.bind('<ctrl-s>', 'config-cycle statusbar.show always in-mode')
 config.bind('<ctrl-t>', 'config-cycle tabs.show always switching')
 config.bind('<meta-shift-l>', 'spawn --userscript qute-bitwarden')
+config.bind('<meta-shift-p>', 'spawn --userscript qute-bitwarden -p')
 
 config.load_autoconfig(False)
