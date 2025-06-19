@@ -2521,3 +2521,12 @@ config.bind('<meta-shift-l>', 'spawn --userscript qute-bitwarden')
 config.bind('<meta-shift-p>', 'spawn --userscript qute-bitwarden -p')
 
 config.load_autoconfig(False)
+
+# DRACULA
+import dracula.draw
+dracula.draw.blood(c, {
+    'spacing': {
+        'vertical': 2,
+        'horizontal': 5
+    }
+})
