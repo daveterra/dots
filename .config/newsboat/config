@@ -43,7 +43,7 @@ color article            default   default
 color info               black     magenta
 color hint-separator     black     magenta
 color hint-description   black     magenta
-color hint-key           blue      magenta
+color hint-key           white      magenta
 color title              white     magenta bold
 
 # Formats
