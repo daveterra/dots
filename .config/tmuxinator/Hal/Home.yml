@@ -1,0 +1,51 @@
+# /Users/dave/.config/tmuxinator/Home.yml
+
+name: Home
+shell: fish
+root: ~/Notes/
+
+# Optional tmux socket
+# socket_name: foo
+
+# Note that the pre and post options have been deprecated and will be replaced by
+# project hooks.
+
+# Project hooks
+
+# Runs on project start, always
+# on_project_start: command
+
+# Run on project start, the first time
+# on_project_first_start: command
+
+# Run on project start, after the first time
+# on_project_restart: command
+
+# Run on project exit ( detaching from tmux session )
+# on_project_exit: command
+
+# Run on project stop
+# on_project_stop: command
+
+# Runs in each window and pane before window/pane specific commands. Useful for setting up interpreter versions.
+pre_window: set -gx TW_CONTEXT home
+# tmux_options: -f ~/.tmux.mac.conf
+
+# Change the command to call tmux. This can be used by derivatives/wrappers like byobu.
+# tmux_command: byobu
+
+
+windows:
+  - Notes:
+      layout: even-horizontal
+      panes:
+        - yazi
+        - taskwarrior-tui
+  - Life:
+      layout: even-horizontal
+      panes:
+        - 
+  - Shopping:
+      layout: even-horizontal
+      panes: 
+        - set -gx TW_CONTEXT home.shopping && TW_CONTEXT=home.shopping taskwarrior-tui
