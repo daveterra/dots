@@ -517,7 +517,7 @@ c.changelog_after_upgrade = 'minor'
 ## `colors.webpage.darkmode.policy.images` to `never`.  - "With selective
 ## image inversion": qutebrowser default settings.
 ## Type: Bool
-c.colors.webpage.darkmode.enabled = False
+# c.colors.webpage.darkmode.enabled = False
 
 ## Which images to apply dark mode to.
 ## Type: String
@@ -661,7 +661,7 @@ c.colors.webpage.preferred_color_scheme = 'dark'
 
 ## Automatically start playing `<video>` elements.
 ## Type: Bool
-# c.content.autoplay = True
+# c.content.autoplay = False
 
 ## List of URLs to ABP-style adblocking rulesets.  Only used when Brave's
 ## ABP-style adblocker is used (see `content.blocking.method`).  You can
@@ -1766,7 +1766,7 @@ c.fonts.default_size = '12pt'
 ##   - never: Never show the scrollbar.
 ##   - when-searching: Show the scrollbar when searching for text in the webpage. With the QtWebKit backend, this is equal to `never`.
 ##   - overlay: Show an overlay scrollbar. On macOS, this is unavailable and equal to `when-searching`; with the QtWebKit backend, this is equal to `never`. Enabling/disabling overlay scrollbars requires a restart.
-c.scrolling.bar = 'always'
+# c.scrolling.bar = 'always'
 
 ## Enable smooth scrolling for web pages. Note smooth scrolling does not
 ## work with the `:scroll-px` command.
@@ -2104,7 +2104,7 @@ c.tabs.title.format = '{audio}{aligned_index}: {current_title}'
 
 ## Wrap when changing tabs.
 ## Type: Bool
-c.tabs.wrap = True
+# c.tabs.wrap = True
 
 ## What search to start when something else than a URL is entered.
 ## Type: String
@@ -2118,7 +2118,7 @@ c.tabs.wrap = True
 ## Page to open if :open -t/-b/-w is used without URL. Use `about:blank`
 ## for a blank page.
 ## Type: FuzzyUrl
-c.url.default_page = 'https://kagi.com/'
+# c.url.default_page = 'https://kagi.com/'
 
 ## URL segments where `:navigate increment/decrement` will search for a
 ## number.
@@ -2155,7 +2155,6 @@ c.url.default_page = 'https://kagi.com/'
 ## the search engine name to the search term, e.g. `:open google
 ## qutebrowser`.
 ## Type: Dict
-c.url.searchengines = {'DEFAULT': 'https://kagi.com/search?q={}'}
 
 ## Page(s) to open at the start.
 ## Type: List of FuzzyUrl, or FuzzyUrl
@@ -2513,8 +2512,22 @@ c.url.searchengines = {'DEFAULT': 'https://kagi.com/search?q={}'}
 # config.bind('n', 'prompt-accept no', mode='yesno')
 # config.bind('y', 'prompt-accept yes', mode='yesno')
 
+c.tabs.width = '18%'
 
-config.source('themes/adwaita.py')
+c.content.geolocation = False
+
+c.url.default_page = 'https://kagi.com/'
+c.url.start_pages = ['https://daveterra.com']
+c.url.searchengines = {'DEFAULT': 'https://kagi.com/search?q={}', '!y': 'https://www.youtube.com/results?search_query={}', '!n': 'https://search.nixos.org/packages?&from=0&size=50&sort=relevance&type=packages&query={}'}
+
+c.completion.open_categories = ['searchengines', 'quickmarks', 'bookmarks', 'history', 'filesystem']
+c.scrolling.bar = 'always'
+
+c.content.autoplay = False
+c.colors.webpage.darkmode.enabled = False
+
+# C != Config
+
 config.bind('<ctrl-s>', 'config-cycle statusbar.show always in-mode')
 config.bind('<ctrl-t>', 'config-cycle tabs.show always switching')
 config.bind('<meta-shift-l>', 'spawn --userscript qute-bitwarden')
@@ -2522,8 +2535,10 @@ config.bind('<meta-shift-p>', 'spawn --userscript qute-bitwarden -p')
 
 config.load_autoconfig(False)
 
+
 # DRACULA
 import dracula.draw
+# config.source('themes/adwaita.py')
 dracula.draw.blood(c, {
     'spacing': {
         'vertical': 2,
