@@ -42,7 +42,6 @@ display-inlay-hints = false
 hidden = false
 
 [keys.normal]
-C-g = ":sh tmux popup -d \"#{pane_current_path}\" -xC -yC -w80% -h80% -E lazygit"
 C-p = ":sh sd notes preview"
 C-x = ":bc"
 g = { a = "code_action" } # Maps `ga` to show possible code actions
@@ -59,6 +58,8 @@ y = [
 ]
 p = ["paste_clipboard_after", "collapse_selection"]
 P = ["paste_clipboard_before", "collapse_selection"]
+S-l = "jump_view_left"
+S-h = "jump_view_right"
 
 [keys.insert]
 A-s = ":w"
