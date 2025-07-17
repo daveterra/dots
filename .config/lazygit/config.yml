@@ -1,5 +1,5 @@
 
-confirmOnQuit: true
+confirmOnQuit: false
 gui:
   showIcons: true
   theme:

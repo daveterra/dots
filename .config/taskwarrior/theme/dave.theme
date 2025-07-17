@@ -55,7 +55,7 @@ color.uda.priority.M=white
 color.uda.priority.L=
 
 # Tags
-color.tag.next=bold yellow
+color.tag.next=bold blue
 color.tag.none=
 color.tagged=green
 
