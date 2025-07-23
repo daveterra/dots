@@ -58,8 +58,8 @@ y = [
 ]
 p = ["paste_clipboard_after", "collapse_selection"]
 P = ["paste_clipboard_before", "collapse_selection"]
-S-l = "jump_view_left"
-S-h = "jump_view_right"
+S-l = "jump_view_right"
+S-h = "jump_view_left"
 
 [keys.insert]
 A-s = ":w"
