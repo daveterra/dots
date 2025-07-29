@@ -31,6 +31,8 @@ ltex.dictionary."en-US" = [
   "Changelist",
   "vias",
   "GPIO",
+  "Oren",
+  "Ztv",
 ] # ltex.dictionary."en-US" = ":/Users/dave/.config/helix/ltex.dictionary.en-US.txt"
 
 # command = "ltex-cli"

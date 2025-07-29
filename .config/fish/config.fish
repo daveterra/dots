@@ -4,7 +4,6 @@
 #
 # Reference is: https://fishshell.com/docs/current/language.html
 
-
 # Nix
 fish_add_path /run/current-system/sw/bin
 fish_add_path /opt/homebrew/bin
@@ -176,6 +175,7 @@ if status is-interactive
     function cheat.sh
         curl cheat.sh/$argv
     end
+
     alias cheat cheat.sh
     alias nls "sd notes ls"
     alias ncd "cd ~/Notes"
