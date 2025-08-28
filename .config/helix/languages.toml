@@ -2,7 +2,8 @@
 command = "ltex-ls"
 [language-server.ltex.config]
 ltex.dictionary."en-US" = [
-  # LTEX_GLOBAL_STORAGE_PATH=/.config/helix/ltex.dictionary.en-US.txt
+  "CUI",
+  "CMMC",
   "OFA",
   "JLC",
   "OGA",
@@ -33,7 +34,8 @@ ltex.dictionary."en-US" = [
   "GPIO",
   "Oren",
   "Ztv",
-] # ltex.dictionary."en-US" = ":/Users/dave/.config/helix/ltex.dictionary.en-US.txt"
+]
+# ltex.dictionary."en-US" = ":/Users/dave/.config/helix/ltex.dictionary.en-US.txt"
 
 # command = "ltex-cli"
 # args = ['--server-command-line=/run/current-system/sw/bin/ltex-ls', '--client-configuration=/Users/dave/temp/ltex.json', '-']

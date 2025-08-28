@@ -14,6 +14,14 @@ windows:
             - yazi
         - second:
             - taskwarrior-tui
+  - Email:
+    layout: main-vertical
+    panes:
+      - cd ~/code/email && ./mutt
+  - Yazi:
+      layout: main-vertical
+      panes:
+        - yazi
   - Scratch:
       layout: main-vertical
       panes:
