@@ -67,9 +67,14 @@ rulers = [120]
 formatter = { command = "black", args = ["--quiet", "-"] }
 auto-format = true
 
-[language-server.rust-analyzer.config]
-check.command = "clippy"
-check.workspace = true
+[language-server.rust-analyzer]
+environment = { "RA_LOG" = "warn" }
+config.check.workspace = true
+config.check.command = "clippy"
+# command = "/run/current-system/sw/bin/rust-analyzer"
+command = "rust-analyzer"
+# args = ["diagnostics", "."]
+args = ["--log-file", "/tmp/rust-analyzer.log"]
 
 [[language]]
 name = "rust"

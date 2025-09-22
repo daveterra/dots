@@ -16,6 +16,9 @@ context.cps_nix.write=(project:cps.nix +cps +nix)
 context.pld.read=(project:cps.pld)
 context.pld.write=project:cps.pld +cps
 
+context.cps_rs.read=(project:cps.rs) or (project:cps.pld) or (project:cps.clc)
+context.cps_rs.write=project:cps.rs +cps
+
 context.home.read=(project:home or +home)
 context.home.write=project:home +home
 

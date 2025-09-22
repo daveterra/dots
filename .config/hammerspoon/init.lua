@@ -70,27 +70,27 @@ end
 --   c:show()
 -- end)
 
-hs.hotkey.bind({"cmd", "shift"}, "1", function() 
+hs.hotkey.bind({"cmd", "alt"}, "1", function() 
   hs.application.launchOrFocus("Kitty")
 end)
 
-hs.hotkey.bind({"cmd", "shift"}, "2", function() 
+hs.hotkey.bind({"cmd", "alt"}, "2", function() 
   hs.application.launchOrFocus("qutebrowser")
 end)
 
-hs.hotkey.bind({"cmd", "shift"}, "3", function() 
+hs.hotkey.bind({"cmd", "alt"}, "3", function() 
   hs.application.launchOrFocus("Mail")
 end)
 
-hs.hotkey.bind({"cmd", "shift"}, "4", function() 
+hs.hotkey.bind({"cmd", "alt"}, "4", function() 
   hs.application.launchOrFocus("Calendar")
 end)
 
-hs.hotkey.bind({"cmd", "shift"}, "5", function() 
+hs.hotkey.bind({"cmd", "alt"}, "5", function() 
   hs.application.launchOrFocus("KiCad")
 end)
 
-hs.hotkey.bind({"cmd", "shift"}, "9", function()
+hs.hotkey.bind({"cmd", "alt"}, "9", function()
   hs.spaces.gotoSpace(1)
 end)
 

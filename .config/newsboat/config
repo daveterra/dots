@@ -1,6 +1,6 @@
 auto-reload yes
 prepopulate-query-feeds yes
-max-items 500
+max-items 0
 mark-as-read-on-hover yes
 article-sort-order date-desc
 
