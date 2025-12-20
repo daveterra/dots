@@ -2545,3 +2545,5 @@ dracula.draw.blood(c, {
         'horizontal': 5
     }
 })
+
+c.content.javascript.clipboard = 'access'
