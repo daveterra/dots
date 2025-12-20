@@ -58,39 +58,39 @@ end)
 
 hs.dockicon.show()
 
-function spotlite(data) 
+function spotlite(data)
     hs.alert.show("Hey")
 end
 
--- hs.hotkey.bind({"cmd", "alt"}, "space", function() 
+-- hs.hotkey.bind({"cmd", "alt"}, "space", function()
 --  	local c = hs.chooser.new(spotlite)
---   c:queryChangedCallback(function(text) 
+--   c:queryChangedCallback(function(text)
 --     print(text)
 --   end)
 --   c:show()
 -- end)
 
-hs.hotkey.bind({"cmd", "alt"}, "1", function() 
+hs.hotkey.bind({"cmd", "shift"}, "1", function()
   hs.application.launchOrFocus("Kitty")
 end)
 
-hs.hotkey.bind({"cmd", "alt"}, "2", function() 
+hs.hotkey.bind({"cmd", "shift"}, "2", function()
   hs.application.launchOrFocus("qutebrowser")
 end)
 
-hs.hotkey.bind({"cmd", "alt"}, "3", function() 
+hs.hotkey.bind({"cmd", "shift"}, "3", function()
   hs.application.launchOrFocus("Mail")
 end)
 
-hs.hotkey.bind({"cmd", "alt"}, "4", function() 
+hs.hotkey.bind({"cmd", "shift"}, "4", function()
   hs.application.launchOrFocus("Calendar")
 end)
 
-hs.hotkey.bind({"cmd", "alt"}, "5", function() 
+hs.hotkey.bind({"cmd", "shift"}, "5", function()
   hs.application.launchOrFocus("KiCad")
 end)
 
-hs.hotkey.bind({"cmd", "alt"}, "9", function()
+hs.hotkey.bind({"cmd", "shift"}, "9", function()
   hs.spaces.gotoSpace(1)
 end)
 
@@ -158,87 +158,80 @@ function arrangeAllWindows()
   end
 end
 
-function finderWatcher(element, event, watcher, data)
-  hs.alert.show("Hey there")
-end
+-- function applicationWatcher(appName, eventType, appObject)
+--     if (eventType == hs.application.watcher.activated) then
+--         hs.alert.show(appName)
+--         if (appName == "Finder") then
+--             -- Bring all Finder windows forward when one gets activated
+--             appObject:selectMenuItem({"Window", "Bring All to Front"})
+--             local wins = appObject:allWindows()
+--             hs.alert.show(#wins)
 
-function applicationWatcher(appName, eventType, appObject)
-    if (eventType == hs.application.watcher.activated) then
-        hs.alert.show(appName)
-        if (appName == "Finder") then
-            -- Bring all Finder windows forward when one gets activated
-            appObject:selectMenuItem({"Window", "Bring All to Front"})
-            local wins = appObject:allWindows()
-            hs.alert.show(#wins)
+--             local win = hs.window.focusedWindow()
+--             local screen = win:screen()
+--             local max = screen:frame()
 
-            local win = hs.window.focusedWindow()
-            local screen = win:screen()
-            local max = screen:frame()
+--             element = hs.uielement.focusedElement()
+--             local watcher = element:newWatcher(finderWatcher)
+--             watcher:start({hs.uielement.watcher.windowCreated, hs.uielement.watcher.focusedWindowChanged, hs.uielement.watcher.focusedElementChanged})
 
-            element = hs.uielement.focusedElement()
-            local watcher = element:newWatcher(finderWatcher)
-            watcher:start({hs.uielement.watcher.windowCreated, hs.uielement.watcher.focusedWindowChanged, hs.uielement.watcher.focusedElementChanged})
+--             for i = 1, #wins do
+--               id = wins[i]:id()
+--               if id == 0 then
+--                 wins[i] = nil
+--               end
+--             end
 
-            for i = 1, #wins do
-              id = wins[i]:id()
-              if id == 0 then
-                wins[i] = nil
-              end
-            end
+--             hs.window.tiling.tileWindows(wins, max)
+--         end
+--     end
+-- end
 
-            hs.window.tiling.tileWindows(wins, max)
-        end
-    end
-end
+-- local appsToAutoTile = {"Finder", "Firefox"}
 
-local appsToAutoTile = {"Finder", "Firefox"}
+-- function autoTile(this_win, app_name, event)
+--   local wf = hs.window.filter.new(app_name)
+-- 	:setOverrideFilter({
+-- 		rejectTitles = { "^Quick Look$", "^Move$", "^Copy$", "^Finder Settings$", " Info$", "^$" }, 	 allowRoles = "AXStandardWindow",
+--     hasTitlebar = true,
+-- 	})
+--   local wins = wf:getWindows()
 
-function autoTile(this_win, app_name, event)
-  -- local wins =  this_win:application():allWindows()
-  local wf = hs.window.filter.new(app_name)
-	:setOverrideFilter({
-		rejectTitles = { "^Quick Look$", "^Move$", "^Copy$", "^Finder Settings$", " Info$", "^$" }, 	 allowRoles = "AXStandardWindow",
-    hasTitlebar = true,
-	})
-  local wins = wf:getWindows()
+--   if #wins == 1 then
+--     hs.grid.maximizeWindow(wins[1])
+--   elseif #wins == 2 then
+--     hs.grid.set(wins[1], hs.geometry.rect(0,0,3,6))
+--     hs.grid.set(wins[2], hs.geometry.rect(3,0,3,6))
+--   elseif #wins == 3 then
+--     hs.grid.set(wins[1], hs.geometry.rect(0,0,2,6))
+--     hs.grid.set(wins[2], hs.geometry.rect(2,0,2,6))
+--     hs.grid.set(wins[3], hs.geometry.rect(4,0,2,6))
+--   elseif #wins == 4 then
+--     hs.grid.set(wins[1], hs.geometry.rect(0,0,3,3))
+--     hs.grid.set(wins[2], hs.geometry.rect(3,0,3,3))
+--     hs.grid.set(wins[3], hs.geometry.rect(0,3,3,3))
+--     hs.grid.set(wins[4], hs.geometry.rect(3,3,3,3))
+--   else
+--     local max = hs.window.focusedWindow():screen():frame()
+--     hs.window.tiling.tileWindows(wins, max)
+--   end
 
-  if #wins == 1 then
-    hs.grid.maximizeWindow(wins[1])
-  elseif #wins == 2 then
-    hs.grid.set(wins[1], hs.geometry.rect(0,0,3,6))
-    hs.grid.set(wins[2], hs.geometry.rect(3,0,3,6))
-  elseif #wins == 3 then
-    hs.grid.set(wins[1], hs.geometry.rect(0,0,2,6))
-    hs.grid.set(wins[2], hs.geometry.rect(2,0,2,6))
-    hs.grid.set(wins[3], hs.geometry.rect(4,0,2,6))
-  elseif #wins == 4 then
-    hs.grid.set(wins[1], hs.geometry.rect(0,0,3,3))
-    hs.grid.set(wins[2], hs.geometry.rect(3,0,3,3))
-    hs.grid.set(wins[3], hs.geometry.rect(0,3,3,3))
-    hs.grid.set(wins[4], hs.geometry.rect(3,3,3,3))
-  else
-    local max = hs.window.focusedWindow():screen():frame()
-    hs.window.tiling.tileWindows(wins, max)
-  end
+--   if #wins > 1 then
+-- 		local app = hs.application.frontmostApplication()
+-- 		app:selectMenuItem { "Window", "Bring All to Front" }
+-- 	end
+-- end
 
-  if #wins > 1 then
-		local app = hs.application.frontmostApplication()
-		app:selectMenuItem { "Window", "Bring All to Front" }
-	end
-end
+-- wf_finder = hs.window.filter.new(appsToAutoTile)
+-- 	:setOverrideFilter({
+-- 		-- exclude various special windows for Finder.app
+--     -- "^$" excludes the Desktop, which has no window title
+-- 		rejectTitles = { "^Quick Look$", "^Move$", "^Copy$", "^Finder Settings$", " Info$", "^$" }, 	 allowRoles = "AXStandardWindow",
+--     hasTitlebar = true,
+-- 	})
+-- 	:subscribe(hs.window.filter.windowCreated, autoTile)
+-- 	:subscribe(hs.window.filter.windowDestroyed, autoTile)
 
-wf_finder = hs.window.filter.new(appsToAutoTile)
-	:setOverrideFilter({
-		-- exclude various special windows for Finder.app
-    -- "^$" excludes the Desktop, which has no window title
-		rejectTitles = { "^Quick Look$", "^Move$", "^Copy$", "^Finder Settings$", " Info$", "^$" }, 	 allowRoles = "AXStandardWindow",
-    hasTitlebar = true,
-	})
-	:subscribe(hs.window.filter.windowCreated, autoTile)
-	:subscribe(hs.window.filter.windowDestroyed, autoTile)
-
--- appWatcher = hs.application.watcher.new(applicationWatcher)
--- appWatcher:start()
 
 local draw = require "hs.drawing"
 local ind = {}

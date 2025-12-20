@@ -47,7 +47,13 @@ command = "rnix-lsp"
 command = "typos-lsp"
 
 [language-server.sourcekit-lsp]
+
 command = "sourcekit-lsp"
+args = [
+  # "-Xswiftc",
+  # "--sdk",
+  # "/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX15.5.sdk",
+]
 
 [language-server.clangd]
 command = 'clangd'
