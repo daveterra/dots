@@ -2,8 +2,8 @@
 	editor = hx
 	pager = delta
 [interactive]
-	diffFilter =  "echo -n $(clear); delta --color-only --features=interactive" 
-[delta] 
+	diffFilter =  "echo -n $(clear); delta --color-only --features=interactive"
+[delta]
 	navigate = true
 	dark = true
 [merge]
@@ -26,6 +26,8 @@
 	cleanbranch = fetch --all -Pp
 	slog = log --graph --all --topo-order --pretty='format:%h %ai %s%d (%an)'
 	check = ls-files --exclude-standard --others
+	history = log -p --
+	semver = describe --abbrev=0 --tags
 [init]
 	defaultBranch = main
 [status]
@@ -45,7 +47,7 @@
 [rerere]
 	enable = true
 [diff]
-	noprefix = true
+	noprefix = false
 [user]
 	name = Dave Terra
 	email = 11788035+daveterra@users.noreply.github.com
