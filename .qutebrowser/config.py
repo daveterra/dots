@@ -2289,10 +2289,11 @@ c.tabs.title.format = '{audio}{aligned_index}: {current_title}'
 # config.bind('[[', 'navigate prev')
 # config.bind(']]', 'navigate next')
 # config.bind('`', 'mode-enter set_mark')
-# config.bind('ad', 'download-cancel')
+config.bind('ad', 'download-open')
 # config.bind('b', 'cmd-set-text -s :quickmark-load')
 # config.bind('cd', 'download-clear')
 # config.bind('co', 'tab-only')
+config.unbind('co')
 # config.bind('d', 'tab-close')
 # config.bind('f', 'hint')
 # config.bind('g$', 'tab-focus -1')
@@ -2518,7 +2519,7 @@ c.content.geolocation = False
 
 c.url.default_page = 'https://kagi.com/'
 c.url.start_pages = ['https://daveterra.com']
-c.url.searchengines = {'DEFAULT': 'https://kagi.com/search?q={}', '!y': 'https://www.youtube.com/results?search_query={}', '!n': 'https://search.nixos.org/packages?&from=0&size=50&sort=relevance&type=packages&query={}'}
+c.url.searchengines = {'DEFAULT': 'https://kagi.com/search?q={}', '!y': 'https://www.youtube.com/results?search_query={}', '!n': 'https://search.nixos.org/packages?&from=0&size=50&sort=relevance&type=packages&query={}', '!d': 'https://www.digikey.com/en/products?keywords={}'}
 
 c.completion.open_categories = ['searchengines', 'quickmarks', 'bookmarks', 'history', 'filesystem']
 c.scrolling.bar = 'always'
@@ -2545,3 +2546,5 @@ dracula.draw.blood(c, {
         'horizontal': 5
     }
 })
+
+c.content.javascript.clipboard = 'access'

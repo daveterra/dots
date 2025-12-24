@@ -9,12 +9,22 @@
 theme = "dracula"
 
 [editor]
-true-color = true
-line-number = "relative"
-mouse = false
 bufferline = "always"
 color-modes = true
+cursor-shape.insert = "bar"
 end-of-line-diagnostics = "hint"
+file-picker.hidden = false
+line-number = "relative"
+lsp.display-inlay-hints = false
+lsp.display-messages = true
+mouse = false
+trim-trailing-whitespace = true
+# Not yet released
+# rainbow-brackets = true
+true-color = true
+auto-format = true
+rulers = [100]
+text-width = 99
 
 [editor.inline-diagnostics]
 # Minimum severity to show a diagnostic on the primary cursor's line.
@@ -26,40 +36,34 @@ other-lines = "hint"
 enable = true
 wrap-at-text-width = true
 
-[editor.cursor-shape]
-insert = "bar"
-# insert = "bar"
-
 [editor.indent-guides]
 render = true
 character = "┊"
 
-[editor.lsp]
-display-messages = true
-display-inlay-hints = false
-
-[editor.file-picker]
-hidden = false
-
 [keys.normal]
 C-p = ":sh sd notes preview"
 C-x = ":bc"
-g = { a = "code_action" } # Maps `ga` to show possible code actions
+g = { a = "code_action" }                                              # Maps `ga` to show possible code actions
 A-a = [":pipe-to sd notes add-word", ":config-reload", ":lsp-restart"]
 A-w = ":bc"
 ";" = "command_mode"
 "'" = "collapse_selection"
 d = ["yank_main_selection_to_clipboard", "delete_selection"]
-y = [
-  "yank_main_selection_to_clipboard",
-  "normal_mode",
-  "flip_selections",
-  "collapse_selection",
-]
+y = ["yank_main_selection_to_clipboard", "normal_mode"]
 p = ["paste_clipboard_after", "collapse_selection"]
 P = ["paste_clipboard_before", "collapse_selection"]
-S-l = "jump_view_right"
-S-h = "jump_view_left"
+
+[keys.normal."f"]
+f = "file_picker_in_current_directory"
+F = "file_picker"
+b = "file_picker_in_current_buffer_directory"
+"." = ":toggle-option file-picker.git-ignore"
+g = "global_search"
+e = "file_explorer"
+r = ":reload-all"
+w = ":toggle whitespace.render all"
+W = ":set whitespace.render none"
+s = ":toggle soft-wrap.enable"
 
 [keys.insert]
 A-s = ":w"
@@ -67,21 +71,32 @@ A-w = ":bc"
 
 [keys.select]
 "'" = "collapse_selection"
-";" = "no_op"
 d = ["yank_main_selection_to_clipboard", "delete_selection"]
-y = [
-  "yank_main_selection_to_clipboard",
-  "normal_mode",
-  "flip_selections",
-  "collapse_selection",
-]
+y = ["yank_main_selection_to_clipboard", "normal_mode"]
 p = "replace_selections_with_clipboard"
 P = "paste_clipboard_before"
 
-# These just seemed backwards to me, I is LEFT of O (aka backwards)
-# but, alas, the remapping does not seem to work...
-# I'll learn to use "gn" and "gp" hopefully
-# C-i = "no_op"
-# C-o = "no_op"
-# C-i = "jump_backward"
-# C-o = "jump_forward"
+
+[editor.statusline]
+left = [
+  "mode",
+  "spinner",
+  "spacer",
+  "read-only-indicator",
+  "file-modification-indicator",
+  "diagnostics",
+  "workspace-diagnostics",
+]
+
+center = ["file-name"]
+
+right = [
+  "position",
+  "total-line-numbers",
+  "position-percentage",
+  "file-encoding",
+  "file-type",
+  "selections",
+]
+
+separator = "│"
