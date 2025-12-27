@@ -5,8 +5,10 @@
 # Reference is: https://fishshell.com/docs/current/language.html
 
 # Nix
-fish_add_path /run/current-system/sw/bin
-fish_add_path /opt/homebrew/bin
+if test "$os" = Darwin
+    fish_add_path /run/current-system/sw/bin
+    fish_add_path /opt/homebrew/bin
+end
 
 # XDG
 set -gx XDG_DATA_HOME "$HOME/.local/share"
@@ -60,7 +62,9 @@ set -gx EDITOR hx
 # Settings for taskwarrior
 set -gx TASKRC "$HOME/.config/taskwarrior/config"
 set -gx TASKDATA "$HOME/.local/share/taskwarrior/"
-set -gx TASK_SYNC_UUID $(ioreg -d2 -c IOPlatformExpertDevice | awk -F\" '/IOPlatformUUID/{print $(NF-1)}')
+if test "$os" = Darwin
+    set -gx TASK_SYNC_UUID $(ioreg -d2 -c IOPlatformExpertDevice | awk -F\" '/IOPlatformUUID/{print $(NF-1)}')
+end
 set -gx TASK_SYNC_SECRET $(cat ~/.config/taskwarrior/secret)
 
 if status is-interactive
