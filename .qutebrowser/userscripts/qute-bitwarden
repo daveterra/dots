@@ -1,6 +1,11 @@
-#!/Users/dave/.qutebrowser/userscripts/.venv/bin/python
-# 
+#!/run/current-system/sw/bin/uv run --script
+#
+# requires-python = ">=3.10"
+# dependencies = ["osascript", "tldextract"]
+#
+
 #!/run/current-system/sw/bin/python3
+#!/Users/dave/.qutebrowser/userscripts/.venv/bin/python
 
 USAGE = """To use in qutebrowser, run: `spawn --userscript qute-bitwarden`"""
 
@@ -107,7 +112,7 @@ def type_information_in_qute_browser(text):
         qute_command('fake-key {}'.format(sequence))
 
 def get_selected_item(items):
-    # if we have 1 item available we just use it as the default 
+    # if we have 1 item available we just use it as the default
     if len(items) == 1:
         return items.pop()
 
@@ -126,8 +131,8 @@ def get_selected_item(items):
 
     for item in items:
         if (
-            item['name'] == choice_name and 
-            item['id'] == choice_id and 
+            item['name'] == choice_name and
+            item['id'] == choice_id and
             item['login']['username'] == choice_username
         ):
             return item
@@ -159,7 +164,7 @@ def main(arguments):
             continue
 
         # get the fist found items and break
-        items = found_items 
+        items = found_items
         break
 
     if not items:

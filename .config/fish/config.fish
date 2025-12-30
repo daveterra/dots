@@ -121,7 +121,7 @@ if status is-interactive
     # bind \t forward-word complete
 
     # Changes:
-    # * Instead of overriding cd, we detect directory change. 
+    # * Instead of overriding cd, we detect directory change.
     #   This allows the script to work for other means of cd, such as z.
     # * Update syntax to work with new versions of fish.
     # * Handle virtualenvs that are not located in the root of a git directory.

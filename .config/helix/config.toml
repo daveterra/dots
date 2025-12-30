@@ -42,10 +42,10 @@ character = "┊"
 
 [keys.normal]
 C-p = ":sh sd notes preview"
-C-x = ":bc"
 g = { a = "code_action" }                                              # Maps `ga` to show possible code actions
 A-a = [":pipe-to sd notes add-word", ":config-reload", ":lsp-restart"]
 A-w = ":bc"
+A-s = ":w"
 ";" = "command_mode"
 "'" = "collapse_selection"
 d = ["yank_main_selection_to_clipboard", "delete_selection"]
